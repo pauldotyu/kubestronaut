@@ -1,0 +1,38 @@
+site_name: So you want to be a Kubestronaut?
+nav:
+  - Overview: index.md
+  - Setting up your environment: setup.md
+  - Kubernetes and Cloud Native Associate (KCNA): kcna.md
+  - Kubernetes and Cloud Native Security Associate (KCNSA): kcsa.md
+  - Certified Kubernetes Application Developer (CKAD): ckad.md
+  - Certified Kubernetes Administrator (CKA): cka.md
+  - Certified Kubernetes Security Specialist (CKS): cks.md
+  - Study tips: study.md
+  - Exam tips: exam.md
+  - What's next?: next.md
+theme:
+  name: material
+  logo: assets/kubestronaut-stacked-white.png
+  favicon: assets/kubestronaut-stacked-color.png
+  features:
+    - navigation.footer
+  palette:
+    # Palette toggle for automatic mode
+    - media: "(prefers-color-scheme)"
+      toggle:
+        icon: material/brightness-auto
+        name: Switch to light mode
+
+    # Palette toggle for light mode
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+
+    # Palette toggle for dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      toggle:
+        icon: material/brightness-4
+        name: Switch to system preference
