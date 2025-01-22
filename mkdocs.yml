@@ -1,7 +1,8 @@
 site_name: So you want to be a Kubestronaut?
 nav:
   - Overview: index.md
-  - Setting up your environment: setup.md
+  - Lab environment setup: ubuntu.md
+  - Install Kubernetes: kubernetes.md
   - Kubernetes and Cloud Native Associate (KCNA): kcna.md
   - Kubernetes and Cloud Native Security Associate (KCNSA): kcsa.md
   - Certified Kubernetes Application Developer (CKAD): ckad.md
@@ -16,6 +17,7 @@ theme:
   favicon: assets/kubestronaut-stacked-color.png
   features:
     - navigation.footer
+    - content.code.copy
   palette:
     # Palette toggle for automatic mode
     - media: "(prefers-color-scheme)"
