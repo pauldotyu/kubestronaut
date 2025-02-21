@@ -4,8 +4,6 @@ For each of the nodes (control and workers), you will need to install the necess
 
 Start by SSH'ing into each node and make sure you are running as root.
 
-> If you recall in my previous post, the network that the virtual machines are installed on uses DHCP so an IP address will be assigned an IP address as they boot up. So when you start your virtual machines, I recommend you start with the control node first so you can get the IP address and then start the worker nodes.
-
 ```bash
 sudo -i
 ```
@@ -54,7 +52,7 @@ apt-get update
 apt-get install containerd.io -y
 ```
 
-Configure containerd to use systemd as the cgroup driver to use systemd cgroups.
+Configure containerd to use systemd as the cgroup driver and use systemd cgroups.
 
 **Reference:** [https://kubernetes.io/docs/setup/production-environment/container-runtimes/#containerd-systemd](https://kubernetes.io/docs/setup/production-environment/container-runtimes/#containerd-systemd)
 
@@ -118,7 +116,7 @@ curl -fsSL https://pkgs.k8s.io/core:/stable:/v1.30/deb/Release.key | gpg --dearm
 echo 'deb [signed-by=/etc/apt/keyrings/kubernetes-apt-keyring.gpg] https://pkgs.k8s.io/core:/stable:/v1.30/deb/ /' | tee /etc/apt/sources.list.d/kubernetes.list
 ```
 
-Update the system, install the Kubernetes packages, and lock the versions.
+Update the system, install the Kubernetes packages, and lock the versions so they don't get unintentionally updated.
 
 ```bash
 apt-get update
@@ -171,7 +169,7 @@ WARN[0000] image connect using default endpoints: [unix:///run/containerd/contai
 
 Reference: https://github.com/kubernetes-sigs/cri-tools/issues/868#issuecomment-1926494368
 
-> ⛔️ Repeat these steps for each worker node before proceeding.
+> ⛔️ Jump back to the [Configure the control and worker nodes](#configure-the-control-and-worker-nodes) section and repeat these steps for each worker node before proceeding.
 
 ## Install kubernetes on control node
 
@@ -201,18 +199,21 @@ Cilium will be used as the CNI plugin for the cluster. Cilium is a powerful, eff
 
 Install the Cilium CLI.
 
+> The Cilium CLI version will be pinned to `v0.16.24`. To get the latest version, visit the [Cilium CLI releases page](https://github.com/cilium/cilium-cli/releases) and update the version number.
+
 ```bash
-export CILIUM_VERSION=$(curl -s https://raw.githubusercontent.com/cilium/cilium-cli/main/stable.txt)
+export CILIUM_VERSION="v0.16.24"
 export CILIUM_ARCH=$(dpkg --print-architecture)
+
 # Download the Cilium CLI binary and its sha256sum
-curl -L --fail --remote-name-all https://github.com/cilium/cilium-cli/releases/download/$CILIUM_VERSION/cilium-linux-$CILIUM_ARCH.tar.gz{,.sha256sum}
+curl -L --fail --remote-name-all https://github.com/cilium/cilium-cli/releases/download/${CILIUM_VERSION}/cilium-linux-${CILIUM_ARCH}.tar.gz{,.sha256sum}
 
 # Verify sha256sum
-sha256sum --check cilium-linux-$CILIUM_ARCH.tar.gz.sha256sum
+sha256sum --check cilium-linux-${CILIUM_ARCH}.tar.gz.sha256sum
 
 # Move binary to correct location and remove tarball
-tar xzvf cilium-linux-$CILIUM_ARCH.tar.gz -C /usr/local/bin 
-rm cilium-linux-$CILIUM_ARCH.tar.gz{,.sha256sum}
+tar xzvf cilium-linux-${CILIUM_ARCH}.tar.gz -C /usr/local/bin
+rm cilium-linux-${CILIUM_ARCH}.tar.gz{,.sha256sum}
 ```
 
 Verify the Cilium CLI is installed.
@@ -221,10 +222,10 @@ Verify the Cilium CLI is installed.
 cilium version --client
 ```
 
-Install network plugin.
+Install Cilium.
 
 ```bash
-cilium install
+cilium install --version 1.17.1
 ```
 
 Wait for the CNI plugin to be installed.
@@ -348,6 +349,7 @@ Install helm to help with installing applications.
 curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3
 chmod 700 get_helm.sh
 ./get_helm.sh
+rm ./get_helm.sh
 ```
 
 Install the etcdctl tool to interact with the etcd database.
