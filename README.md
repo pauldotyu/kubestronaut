@@ -16,3 +16,9 @@ mkdocs serve
 ## Customizing the Theme
 
 See the [Material for MkDocs documentation](https://squidfunk.github.io/mkdocs-material/getting-started/) for more information on customizing the site.
+
+## Authoring Content
+
+Quick links to help with content authoring experience:
+
+- [Admonitions](https://squidfunk.github.io/mkdocs-material/reference/admonitions/#supported-types)

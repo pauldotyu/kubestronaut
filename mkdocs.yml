@@ -1,15 +1,14 @@
-site_name: So you want to be a Kubestronaut?
+site_name: So you want to be a Kubestronaut
 nav:
   - Overview: index.md
   - Install VMware: vmware.md
   - Install Ubuntu Server: ubuntu.md
   - Install Kubernetes: kubernetes.md
   - Kubernetes and Cloud Native Associate (KCNA): kcna.md
-  - Kubernetes and Cloud Native Security Associate (KCNSA): kcsa.md
+  - Kubernetes and Cloud Native Security Associate (KCSA): kcsa.md
   - Certified Kubernetes Application Developer (CKAD): ckad.md
   - Certified Kubernetes Administrator (CKA): cka.md
   - Certified Kubernetes Security Specialist (CKS): cks.md
-  - Study tips: study.md
   - Exam tips: exam.md
   - What's next?: next.md
 theme:
@@ -70,3 +69,8 @@ extra:
           note: >-
             Thanks for your feedback! Help us improve this page by
             using our <a href="..." target="_blank" rel="noopener">feedback form</a>.
+markdown_extensions:
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences
+  - attr_list
