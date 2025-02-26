@@ -1,7 +1,8 @@
 site_name: So you want to be a Kubestronaut?
 nav:
   - Overview: index.md
-  - Lab environment setup: ubuntu.md
+  - Install VMware: vmware.md
+  - Install Ubuntu Server: ubuntu.md
   - Install Kubernetes: kubernetes.md
   - Kubernetes and Cloud Native Associate (KCNA): kcna.md
   - Kubernetes and Cloud Native Security Associate (KCNSA): kcsa.md
@@ -38,3 +39,34 @@ theme:
       toggle:
         icon: material/brightness-4
         name: Switch to system preference
+extra:
+  consent:
+    title: Cookie consent
+    description: >-
+      I use cookies to recognize your repeated visits and preferences, as well
+      as to measure the effectiveness of the documentation and whether you can
+      find what you're searching for. With your consent, you're helping me to
+      make this site better. Thank you!
+    actions:
+      - accept
+      - manage
+    copyright: >
+      Copyright &copy; 2025 Paul Yu –
+      <a href="#__consent">Change cookie settings</a>
+  analytics:
+    provider: google
+    property: G-8TB1PXGXJZ
+    feedback:
+      title: Was this page helpful?
+      ratings:
+        - icon: material/emoticon-happy-outline
+          name: This page was helpful
+          data: 1
+          note: >-
+            Thanks for your feedback!
+        - icon: material/emoticon-sad-outline
+          name: This page could be improved
+          data: 0
+          note: >-
+            Thanks for your feedback! Help us improve this page by
+            using our <a href="..." target="_blank" rel="noopener">feedback form</a>.

@@ -7,7 +7,7 @@ First thing we need to do is download the Ubuntu Server image based on your mach
 
 ## Install Ubuntu Server on VMware Fusion
 
-As mentioned in my previous post, I am using a M1 Macbook Pro, so I will be using VMware Fusion to create and run virtual machines on my laptop. If you are using VMware Workstation, the steps should be similar.
+As mentioned in the previous section, I am using a M1 Macbook Pro, so I will be using VMware Fusion to create and run virtual machines on my laptop. If you are using VMware Workstation, the steps should be similar.
 
 ## Create a New Virtual Machine
 
@@ -188,4 +188,3 @@ hostname
 ```
 
 You can power down this virtual machine and take a snapshot so that you have a clean worker node to clone from in the future. Remember to give your snapshot a name like "Before kubeadm join" so that you can easily identify it in the future.
-

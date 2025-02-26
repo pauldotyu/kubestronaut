@@ -12,3 +12,7 @@ source .venv/bin/activate
 pip install -r requirements.txt
 mkdocs serve
 ```
+
+## Customizing the Theme
+
+See the [Material for MkDocs documentation](https://squidfunk.github.io/mkdocs-material/getting-started/) for more information on customizing the site.

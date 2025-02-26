@@ -1,3 +1,8 @@
+---
+hide:
+  - feedback
+---
+
 # Overview
 
 Some words of encouragement here.
