@@ -1,6 +1,7 @@
+repo_url: https://github.com/pauldotyu/kubestronaut
 site_name: So you want to be a Kubestronaut
 nav:
-  - Overview: index.md
+  - Getting started: index.md
   - Install VMware: vmware.md
   - Install Ubuntu Server: ubuntu.md
   - Install Kubernetes: kubernetes.md
@@ -14,6 +15,8 @@ nav:
 theme:
   name: material
   logo: assets/kubestronaut-stacked-white.png
+  icon:
+    repo: fontawesome/brands/github
   favicon: assets/kubestronaut-stacked-color.png
   features:
     - navigation.footer

@@ -1,16 +1,28 @@
-This workshop intentionally uses Kubernetes v1.31.6 to provide upgrade practice opportunities. While current exams are based on Kubernetes v1.32, the core concepts remain consistent between versions.
+## Overview
 
-As part of the cluster setup, you will install containerd for the container runtime, Cilium as the CNI plugin, MetalLB for mimicking cloud load balancers, and NGINX Ingress Controller - all well-documented, popular choices that you can substitute if preferred.
+This workshop intentionally uses Kubernetes v1.31.6 to provide cluster upgrade practice opportunities. While current exams are based on Kubernetes v1.32, the core concepts remain consistent between versions.
+
+As part of the cluster setup, you'll install containerd for the container runtime, [gVisor](https://gvisor.dev/) for container isolation, Cilium as the CNI plugin, MetalLB for mimicking cloud load balancers, and Ingress-Nginx Controller - all well-documented, popular choices that you can substitute if preferred.
 
 ## Prepare the control and worker nodes
 
-For each of the nodes (control and workers), you will need to install the necessary packages and configure the system. Each node needs to have containerd, crictl, kubeadm, kubelet, and kubectl installed.
+For each of the nodes (control and workers), you'll need to install the necessary packages and configure the system. Each node will need to have the following installed: 
 
-Start by SSH'ing into each node then run the following command to make sure you are running as root.
+- containerd
+- gVisor
+- crictl
+- kubeadm
+- kubelet
+- kubectl
+
+To begin, SSH into the control node and switch to the root user.
 
 ```bash
 sudo -i
 ```
+
+!!! note
+    Most of the tasks you perform will be as the root user. This is avoid having to use `sudo` for every command.
 
 ### Disable swap
 
@@ -34,7 +46,9 @@ Update the system and install necessary packages.
 apt-get update && apt-get upgrade -y
 ```
 
-### Install runsc
+### Install gVisor
+
+gVisor is is used to provide an additional layer of security for containers. It uses runsc which is a lightweight, portable, and secure container runtime that implements the gVisor runtime interface.
 
 Install the dependencies for runsc.
 
@@ -61,7 +75,7 @@ sudo apt-get update && sudo apt-get install -y runsc
 
 ### Install containerd
 
-Kubernetes uses the Container Runtime Interface (CRI) to interact with container runtimes and **containerd** is the container runtime that Kubernetes uses (it was dockerd in the past).
+Kubernetes uses the Container Runtime Interface (CRI) to interact with container runtimes and containerd is the container runtime that it uses (it was dockerd in the past).
 
 Install containerd on each node from the Docker repository and configure it to use systemd as the cgroup driver.
 
@@ -86,36 +100,34 @@ apt-get update
 apt-get install containerd.io -y
 ```
 
-Configure containerd to use systemd as the cgroup driver and use systemd cgroups.
-
-**Reference:** [https://kubernetes.io/docs/setup/production-environment/container-runtimes/#containerd-systemd](https://kubernetes.io/docs/setup/production-environment/container-runtimes/#containerd-systemd)
+Configure containerd to use systemd as the cgroup driver, use systemd cgroups, and use runsc as the runtime.
 
 ```bash
+# generate default config
 mkdir -p /etc/containerd
 containerd config default | tee /etc/containerd/config.toml
-
+# update to use systemd cgroup driver
 sed -e 's/SystemdCgroup = false/SystemdCgroup = true/g' -i /etc/containerd/config.toml
-
 # configure containerd to use runsc
 sed -e 's/shim_debug = false/shim_debug = true/g' -i /etc/containerd/config.toml
-sed -i '/\[plugins."io.containerd.grpc.v1.cri".containerd.runtimes\]/a \\n        [plugins."io.containerd.grpc.v1.cri".containerd.runtimes.runsc]\n          runtime_type = "io.containerd.runsc.v1"' /etc/containerd/config.toml
-
+sed -e '/\[plugins."io.containerd.grpc.v1.cri".containerd.runtimes\]/a \\n        [plugins."io.containerd.grpc.v1.cri".containerd.runtimes.runsc]\n          runtime_type = "io.containerd.runsc.v1"' /etc/containerd/config.toml
+# restart containerd
 systemctl restart containerd
 systemctl enable containerd
 ```
 
-Update containerd to load the overlay and br_netfilter modules.
+**Reference:** [https://kubernetes.io/docs/setup/production-environment/container-runtimes/#containerd-systemd](https://kubernetes.io/docs/setup/production-environment/container-runtimes/#containerd-systemd)
+
+Update containerd to load the overlay and br_netfilter modules. This is necessary for the overlay network to work.
 
 ```bash
-cat <<EOF | tee /etc/modules-load.d/containerd.conf
+cat << EOF | tee /etc/modules-load.d/containerd.conf
 overlay
 br_netfilter
 EOF
 ```
 
 Update kernel network settings to allow traffic to be forwarded.
-
-**Reference:** [https://kubernetes.io/docs/setup/production-environment/container-runtimes/#prerequisite-ipv4-forwarding-optional](https://kubernetes.io/docs/setup/production-environment/container-runtimes/#prerequisite-ipv4-forwarding-optional)
 
 ```bash
 cat << EOF | tee /etc/sysctl.d/kubernetes.conf
@@ -125,7 +137,9 @@ net.ipv4.ip_forward = 1
 EOF
 ```
 
-Load the kernel modules and apply the sysctl settings to ensure they changes are used by the current system.
+**Reference:** [https://kubernetes.io/docs/setup/production-environment/container-runtimes/#prerequisite-ipv4-forwarding-optional](https://kubernetes.io/docs/setup/production-environment/container-runtimes/#prerequisite-ipv4-forwarding-optional)
+
+Load the kernel modules and apply the sysctl settings to ensure the changes are used.
 
 ```bash
 modprobe overlay
@@ -143,9 +157,9 @@ systemctl status containerd
 
 The following tools are necessary for a successful Kubernetes installation:
 
-- kubeadm: the command to bootstrap the cluster.
-- kubelet: the component that runs on all of the machines in the cluster and does things like starting pods and containers.
-- kubectl: the command line tool to interact with the cluster.
+- **kubeadm**: the command to bootstrap the cluster.
+- **kubelet**: the component that runs on all of the machines in the cluster and does things like starting pods and containers.
+- **kubectl**: the command line tool to interact with the cluster.
 
 **Reference:** [https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/install-kubeadm/#installing-kubeadm-kubelet-and-kubectl](https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/install-kubeadm/#installing-kubeadm-kubelet-and-kubectl)
 
@@ -156,7 +170,7 @@ curl -fsSL https://pkgs.k8s.io/core:/stable:/v1.31/deb/Release.key | gpg --dearm
 echo 'deb [signed-by=/etc/apt/keyrings/kubernetes-apt-keyring.gpg] https://pkgs.k8s.io/core:/stable:/v1.31/deb/ /' | tee /etc/apt/sources.list.d/kubernetes.list
 ```
 
-Update the system, install the Kubernetes packages, and lock the versions so they don't get unintentionally updated.
+Update the system, install the Kubernetes packages, and hold packages so they don't get unintentionally updated.
 
 ```bash
 apt-get update
@@ -172,11 +186,7 @@ systemctl enable --now kubelet
 
 ### Install critctl
 
-CRI-O is an implementation of the Container Runtime Interface (CRI) used by the kubelet to interact with container runtimes.
-
-**Reference:** [https://kubernetes.io/docs/setup/production-environment/container-runtimes/#cri-o](https://kubernetes.io/docs/setup/production-environment/container-runtimes/#cri-o)
-
-Install crictl by downloading the binary to the system.
+CRI-O is an implementation of the Container Runtime Interface (CRI) used by the kubelet to interact with container runtimes. Install crictl by downloading the binary to the system.
 
 ```bash
 export CRICTL_VERSION="v1.31.1"
@@ -186,6 +196,8 @@ tar zxvf crictl-${CRICTL_VERSION}-linux-${CRICTL_ARCH}.tar.gz -C /usr/local/bin
 rm -f crictl-${CRICTL_VERSION}-linux-${CRICTL_ARCH}.tar.gz
 ```
 
+**Reference:** [https://kubernetes.io/docs/setup/production-environment/container-runtimes/#cri-o](https://kubernetes.io/docs/setup/production-environment/container-runtimes/#cri-o)
+
 Verify crictl is installed.
 
 ```bash
@@ -194,33 +206,35 @@ crictl version
 
 ### Configure crictl
 
-Configure crictl to use the containerd socket. This is because default settings for crictl have been deprecated.
+Configure crictl to use the containerd socket by default to avoid seeing a warning each time you run crictl commands.
 
 ```sh
 crictl config --set runtime-endpoint=unix:///run/containerd/containerd.sock
 ```
 
-!!! tip 
-    If you don't do this, you will see a warning each time you run `crictl ps`.
-    
-    **Reference:** [https://github.com/kubernetes-sigs/cri-tools/issues/868#issuecomment-1926494368](https://github.com/kubernetes-sigs/cri-tools/issues/868#issuecomment-1926494368)
+**Reference:** [https://github.com/kubernetes-sigs/cri-tools/issues/868#issuecomment-1926494368](https://github.com/kubernetes-sigs/cri-tools/issues/868#issuecomment-1926494368)
 
 !!! danger
-    Before you move on, jump back to the [Configure the control and worker nodes](#configure-the-control-and-worker-nodes) section and repeat these steps for each worker node.
+    Before you move on, jump back to the [Prepare the control and worker nodes](#prepare-the-control-and-worker-nodes) section and repeat these steps for each worker node.
 
 ## Kubernetes control plane
 
-The control node is where the Kubernetes control plane components will be installed. This includes the API server, controller manager, scheduler, and etcd. The control node will also run the CNI plugin to provide networking for the cluster.
+The control node is where the Kubernetes control plane components will be installed. This includes the [API server](https://kubernetes.io/docs/reference/command-line-tools-reference/kube-apiserver/), [controller manager](https://kubernetes.io/docs/reference/command-line-tools-reference/kube-controller-manager/), [scheduler](https://kubernetes.io/docs/reference/command-line-tools-reference/kube-scheduler/), and [etcd](https://etcd.io/). The control node will also run the [CNI plugin](https://kubernetes.io/docs/concepts/extend-kubernetes/compute-storage-net/network-plugins/) to provide networking for the cluster.
 
 ### Install with kubeadm
 
 Using kubeadm, install the Kubernetes with the `kubeadm init` command. This will install the control plane components and create the necessary configuration files.
 
-**Reference:** [https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/create-cluster-kubeadm/](https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/create-cluster-kubeadm/)
+Make sure you are back in the control node as the root user and run the following command to initialize the cluster.
 
 ```bash
 kubeadm init --kubernetes-version 1.31.6 --pod-network-cidr 10.21.0.0/16 --v=5
 ```
+
+!!! note
+    This can take a few minutes to complete. Be patient and wait for the process to finish.
+
+**Reference:** [https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/create-cluster-kubeadm/](https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/create-cluster-kubeadm/)
 
 Export the kubeconfig file so the root user can access the cluster.
 
@@ -247,7 +261,7 @@ export CILIUM_VERSION="v0.16.24"
 export CILIUM_ARCH=$(dpkg --print-architecture)
 ```
 
-Download the Cilium CLI binary its sha256sum and verify sha256sum to ensure the binary is not corrupted.
+Download the Cilium CLI binary its sha256sum and verify sha256sum to ensure the binary isn't corrupted.
 
 ```bash
 curl -L --fail --remote-name-all https://github.com/cilium/cilium-cli/releases/download/${CILIUM_VERSION}/cilium-linux-${CILIUM_ARCH}.tar.gz{,.sha256sum}
@@ -273,14 +287,14 @@ Install Cilium CNI plugin.
 cilium install --version 1.17.1
 ```
 
-Run the following command and wait for the CNI plugin to be installed.
+Run the following command to monitor the Cilium installation progress.
 
 ```bash
 cilium status --wait
 ```
 
-!!! info
-    This process can take a few minutes and you will initially see "Error" in the output, but they will eventually resolve so be patient.
+!!! note
+    This process can take a few minutes and you'll initially see errors and warnings in the output. They will eventually resolve so be patient.
 
 Within a few minutes, you should see output like this which shows the Cilium CNI plugin is installed and running.
 
@@ -335,7 +349,7 @@ Print the join command and run it on the worker nodes.
 kubeadm token create --print-join-command
 ```
 
-!!! warning
+!!! danger
     Copy the join command to your clipboard or a text file as you'll need it for the next step.
 
 ## Join the worker nodes
@@ -344,7 +358,7 @@ Log into each worker node, make sure you are in the root shell, and paste and ru
 
 **Reference:** [https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/create-cluster-kubeadm/#join-nodes](https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/create-cluster-kubeadm/#join-nodes)
 
-If your shell does not show `root@worker`, run `sudo -i` to switch to the root user.
+If your shell doesn't show `root@worker`, run `sudo -i` to switch to the root user.
 
 Run a command similar to the following on each worker node.
 
@@ -358,27 +372,30 @@ After the worker nodes have joined the cluster, log back into the control node a
 kubectl get nodes -w
 ```
 
-At this point you can log out of the worker nodes and probably don't need to log into them again. You can work with cluster from the control node.
+Wait until all the worker nodes are listed as **Ready** then press `Ctrl+C` to exit the watch.
+
+!!! note
+    At this point you can log out of the worker nodes and probably don't need to log into them again. You can work with cluster from the control node.
 
 ## Install and configure tools
 
-Log back into the control node as your normal user and install some handy tools and configure kubectl. 
+Log back into the control node as your normal user to install some handy tools and configure kubectl. 
 
 ### Configure kubectl completion and alias
 
 These configurations are optional but will make your life easier when working with Kubernetes.
 
-**Reference:** [https://kubernetes.io/docs/reference/kubectl/quick-reference/](https://kubernetes.io/docs/reference/kubectl/quick-reference/)
-
 Set kubectl alias so you can use `k` instead of `kubectl` and add kubectl completion.
 
 ```bash
-cat <<EOF | tee -a ~/.bashrc
+cat << EOF | tee -a ~/.bashrc
 source <(kubectl completion bash)
 alias k=kubectl
 complete -o default -F __start_kubectl k
 EOF
 ```
+
+**Reference:** [https://kubernetes.io/docs/reference/kubectl/quick-reference/](https://kubernetes.io/docs/reference/kubectl/quick-reference/)
 
 Reload the bash profile.
 
@@ -388,10 +405,10 @@ source ~/.bashrc
 
 ### Configure vim
 
-Same goes for Vim. As this will be the main editor you work with throughout the exams, it is best to configure .vimrc to help with editing YAML files.
+Vim will be the main editor you work with throughout the exams, it is best to configure .vimrc to help with editing YAML files.
 
 ```bash
-cat <<EOF | tee -a ~/.vimrc
+cat << EOF | tee -a ~/.vimrc
 set tabstop=2
 set expandtab
 set shiftwidth=2
@@ -400,7 +417,7 @@ EOF
 
 ### Install Helm
 
-Helm is a package manager for Kubernetes that helps you manage Kubernetes applications. Helm uses a packaging format called charts which are a collection of files that describe a related set of Kubernetes resources.
+[Helm](https://helm.sh) is a package manager for Kubernetes that helps you manage Kubernetes applications. Helm uses a packaging format called charts which are a collection of files that describe a related set of Kubernetes resources.
 
 Run the following commands to install Helm.
 
@@ -415,41 +432,39 @@ rm ./get_helm.sh
 
 ### Install etcdctl
 
-This is etcd 😅
+etcd is the critical distributed key-value store that serves as Kubernetes' primary database, storing all cluster configuration, state, and metadata.
 
-![Funny meme of the importance of etcd](https://user-images.githubusercontent.com/5873433/234062738-14844d26-0cfa-444a-aeca-387531839971.png)
+![Diagram showing etcd's central role in Kubernetes architecture](https://user-images.githubusercontent.com/5873433/234062738-14844d26-0cfa-444a-aeca-387531839971.png)
 
-Jokes aside, etcd is the heart of Kubernetes. It's responsible for storing all configuration data, state data, and metadata about the cluster and etcdctl is a client for managing it. So you will need to use it to perform some tasks especially in the advanced exams.
-
-Run the following command to install etcdctl.
+Run the following command to install etcdctl, the command-line client for interacting with etcd.
 
 ```bash
-sudo apt install etcd-client -y
+sudo apt update && sudo apt install etcd-client -y
 ```
 
 ### Install trivy
 
-Trivy is a vulnerability scanner for containers and other artifacts. It can be used to scan container images for vulnerabilities and generate reports. Typically this tool is not installed directly on a node but rather used in a local development environment or CI/CD pipeline. For the purpose of getting familiar with the tool, you can install it on the control node.
+[Trivy](https://trivy.dev/latest/) is a vulnerability scanner for containers and other artifacts. While typically used in CI/CD pipelines rather than directly on nodes, you'll install it on the control node to become familiar with the tool.
 
-Run the following commands to install the Trivy CLI tool.
+Run the following commands to install the Trivy.
 
 ```bash
-sudo apt-get install wget gnupg
+sudo apt install wget gnupg
 wget -qO - https://aquasecurity.github.io/trivy-repo/deb/public.key | gpg --dearmor | sudo tee /usr/share/keyrings/trivy.gpg > /dev/null
 echo "deb [signed-by=/usr/share/keyrings/trivy.gpg] https://aquasecurity.github.io/trivy-repo/deb generic main" | sudo tee -a /etc/apt/sources.list.d/trivy.list
-sudo apt-get update
-sudo apt-get install trivy
+sudo apt update
+sudo apt install trivy
 ```
 
 **Reference:** [https://trivy.dev/latest/getting-started/](https://trivy.dev/latest/getting-started/)
 
 ## Install Ingress Controller
 
-Running an ingress controller in a local Kubernetes cluster can be challenging since it requires a Service of type LoadBalancer which is not available in a local environment. However, you can use [MetalLB](https://metallb.io/) which is a load balancer implementation for bare metal Kubernetes clusters.
+Running an ingress controller in a local Kubernetes cluster can be challenging since it requires a Service of type LoadBalancer which isn't available in a local environment. However, you can use [MetalLB](https://metallb.io/) which is a load balancer implementation for bare metal Kubernetes clusters.
 
 ### Configure kube-proxy
 
-Run the following commands to edit the kube-proxy configuration to use IPVS mode and enable strict ARP for MetalLB.
+Run the following commands to edit the [kube-proxy](https://kubernetes.io/docs/reference/command-line-tools-reference/kube-proxy/) configuration to use IPVS mode and enable strict ARP for MetalLB.
 
 ```bash
 kubectl get configmap kube-proxy -n kube-system -o yaml | \
@@ -504,15 +519,15 @@ EOF
   
     Simply wait a few seconds and try again.
 
-This equivalent to simply using [NodePort](https://kubernetes.github.io/ingress-nginx/deploy/#bare-metal-clusters) services but will mimic the behavior of a LoadBalancer service and assign the ingress service a IP address.
+This is equivalent to simply using [NodePort](https://kubernetes.github.io/ingress-nginx/deploy/#bare-metal-clusters) services but will mimic the behavior of a LoadBalancer service and assign the ingress service an IP address.
 
 **Reference:** [https://metallb.universe.tf/installation/](https://metallb.universe.tf/installation/)
 
-### Install NGINX Ingress Controller
+### Install Ingress Controller
 
-NGINX Ingress Controller is an Ingress controller that is commonly used in Kubernetes clusters to expose services to the outside world. It is a Layer 7 load balancer that can handle HTTP, HTTPS, and TCP traffic.
+Ingress Controllers provides Layer 7 load balancing for HTTP, HTTPS, and TCP traffic, allowing external access to services within your Kubernetes cluster.
 
-Run the following command to install the NGINX Ingress Controller.
+Run the following command to install the Ingress-Nginx Controller.
 
 ```bash
 helm upgrade --install ingress-nginx ingress-nginx \
@@ -524,4 +539,4 @@ helm upgrade --install ingress-nginx ingress-nginx \
 
 ## Take a snapshot
 
-At this point it might be a good idea to take another snapshot of each virtual machine. Give it a descriptive name like **after-k8s-install** so you can easily revert back to this point if you break something in your cluster.
+At this point, it's recommended to take another snapshot of each virtual machine. Give it a descriptive name like **after-k8s-install** so you can easily revert back to this point if you break something in your cluster.

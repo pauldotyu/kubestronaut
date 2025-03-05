@@ -1,6 +1,8 @@
+## Overview
+
 The KCNA exam is considered to be the entry level exam. It is a multiple choice exam that tests your overall understanding of fundamental Kubernetes and Cloud Native architecture concepts.
 
-Take a look at the [Kubernetes and Cloud Native Associate (KCNA)](https://training.linuxfoundation.org/certification/kubernetes-cloud-native-associate/) page for Domain and Competency details.
+Read through the [Kubernetes and Cloud Native Associate (KCNA)](https://training.linuxfoundation.org/certification/kubernetes-cloud-native-associate/) page for Domain and Competency details and information on how to register for the exam.
 
 Some of the topics that you should be familiar with include:
 
@@ -14,7 +16,7 @@ Let's practice with some exercises to help familiarize yourself with the concept
 
 ## Container fundamentals
 
-A container is a application packaging method that allows you to run an application and its dependencies in a isolated environment. Containers are lightweight and portable, making them ideal for deploying applications in a cloud native environment.
+A [container](https://kubernetes.io/docs/concepts/containers/) is an application packaging method that allows you to run an application and its dependencies in an isolated environment. Containers are lightweight and portable, making them ideal for deploying applications in a cloud native environment.
 
 A container image is defined within a Dockerfile. The Dockerfile contains instructions on how to build the image. The image is then used to create a container.
 
@@ -29,7 +31,7 @@ A container image is defined within a Dockerfile. The Dockerfile contains instru
 
 Let's create a simple Node.js application and package it in a container. Open a terminal and follow the steps below:
 
-Create a new directory for the application:
+On your local machine, create a new directory for the application:
 
 ```bash
 mkdir myapp
@@ -39,7 +41,7 @@ cd myapp
 Initialize a new Node.js application.
 
 ```bash
-npm init
+npm init -y
 ```
 
 Install the `express` package.
@@ -75,7 +77,7 @@ cd ..
 node src/server.js
 ```
 
-Open a browser and navigate to http://localhost:3000. You should see "Hello World!" displayed.
+Open a browser and navigate to [http://localhost:3000]{:target=_blank}. You should see "Hello World!" displayed.
 
 Press `Ctrl+C` to stop the application.
 
@@ -107,7 +109,7 @@ Run the application in a container.
 docker run -d -p 3000:3000 myapp:latest
 ```
 
-Open a browser and navigate to http://localhost:3000. You should see "Hello World!" displayed.
+Open a browser and navigate to [http://localhost:3000]{:target=_blank}. You should see "Hello World!" displayed.
 
 Run the following command to list the running containers.
 
@@ -127,7 +129,7 @@ docker stop <CONTAINER_ID> # replace <CONTAINER_ID> with the actual container ID
 
 The Dockerfile above is fairly simple, but it can be optimized using multi-stage builds. Multi-stage builds allow you to use multiple `FROM` statements in a single Dockerfile. This can help reduce the size of the final image and is often used as a best practice in terms of security and performance.
 
-**Reference:** [docker-multi-stage-builds]{:target="_blank"}
+**Reference:** [https://docs.docker.com/get-started/docker-concepts/building-images/multi-stage-builds/](https://docs.docker.com/get-started/docker-concepts/building-images/multi-stage-builds/)
 
 Run the following command to list the container images.
 
@@ -163,19 +165,19 @@ Build the container image again.
 docker build -t myapp:latest .
 ```
 
-Run the following command to list the container images.
+List the container images again.
 
 ```bash
 docker images
 ```
 
-Note that the size of the `myapp:latest` image is now a little over 340MB. This is a significant reduction in size. Not only that, but the final image only contains the files needed to run the application, which is a good security practice.
+The size of the `myapp:latest` image is now a little over 340MB. This is a significant reduction in size. Not only that, but the final image only contains the files needed to run the application, which is a good security practice.
 
 If you build and run the container image using the same commands as before, you should see the same "Hello World!" message displayed.
 
 ### Multi-architecture builds
 
-The promise of containers is that they can run anywhere. But in reality, this is not always the case. Different operating system architectures require different container images. For example, a container image built for AMD64 architecture will not run on ARM64 architecture.
+The promise of containers is that they can run anywhere. But in reality, this isn't always the case. Different operating system architectures require different container images. For example, a container image built for AMD64 architecture won't run on ARM64 architecture.
 
 Good news is that Docker gives you the ability to build container images for different architectures. The docker CLI includes a plugin feature called buildx that allows you to build multi-arch images. This allows you to run the same container image on different platforms without modification.
 
@@ -188,17 +190,19 @@ docker buildx create --name mybuilder --driver docker-container --platform linux
 !!! note
     You can also configure Builders in your Docker Desktop settings.
 
-**Reference:** [Docker Buildx](https://docs.docker.com/buildx/working-with-buildx/)
+**Reference:** [https://docs.docker.com/buildx/working-with-buildx/](https://docs.docker.com/buildx/working-with-buildx/)
 
 Now you can use the new buildx builder to create a multi-arch image.
 
 ```bash
-docker buildx build --platform linux/amd64,linux/arm64 -t myapp:latest .
+docker buildx build --platform linux/amd64,linux/arm64 --output type=image,push=false -t myapp:latest .
 ```
+
+In the build output you should see that the image is built for both AMD64 and ARM64 architectures.
 
 ### Container registries
 
-Container images can be stored in container registries, such as Docker Hub, Azure Container Registry, or GitHub Container Registry. This allows you to share images with others and deploy them to different environments.
+Container images can be stored in container registries, such as [Docker Hub](https://hub.docker.com/), a private [Azure Container Registry](https://learn.microsoft.com/azure/container-registry/container-registry-intro), or [GitHub Container Registry](https://docs.github.com/packages/working-with-a-github-packages-registry/working-with-the-container-registry). This allows you to share images with others and deploy them to different environments.
 
 There are many guides available on how to push and pull images from different container registries. But for this exercise, we'll use [ttl.sh](https://ttl.sh/) which is an ephemeral and anonymous container registry offered by friends at [Replicated](https://www.replicated.com/).
 
@@ -217,10 +221,10 @@ Build and push the container image to ttl.sh.
 docker buildx build --platform linux/amd64,linux/arm64 --push -t ttl.sh/${IMG_REPO}:${IMG_VERSION} .
 ```
 
-Now if you run the following command, you should see the image being pulled from ttl.sh.
+Now if you run the following command, you should see the image hosted ttl.sh supports both AMD64 and ARM64 architectures.
 
 ```bash
-docker pull ttl.sh/${IMG_REPO}:${IMG_VERSION}
+docker buildx imagetools inspect ttl.sh/${IMG_REPO}:${IMG_VERSION}
 ```
 
 Run the following command to print the container image you pushed to ttl.sh and copy the output of the command to a text file for future reference.
@@ -236,30 +240,35 @@ echo ttl.sh/${IMG_REPO}:${IMG_VERSION}
 
 Now that you have a basic understanding of containers, let's move on to Kubernetes. Kubernetes is an open-source container orchestration platform that automates the deployment, scaling, and management of containerized applications.
 
-### Kubernetes architecture and components
+### Architecture and components
 
 Quickly review the [Kubernetes Architecture](https://kubernetes.io/docs/concepts/architecture/) documentation to understand the key components of a Kubernetes cluster. It is a great way to get started with Kubernetes and will help you understand the basic concepts.
 
-The cluster is made up of a control plane and one or more nodes. The control plane is responsible for managing the cluster and the nodes are responsible for running the applications. You created a control plane node and joined worker nodes to the cluster using the kubeadm tool in the previous section. 
-
-Be sure to read through the [Control plane components](https://kubernetes.io/docs/concepts/architecture/#control-plane-components) and [Node components](https://kubernetes.io/docs/concepts/architecture/#node-components) sections to understand the roles of each component.k
-
-Trying to learn Kubernetes fundamentals in a short period of time is a bit of an impossible task. But here in this workshop, we can cover some of the basics by deploying our Node.js application to a Kubernetes cluster.
+The cluster is made up of a control plane and one or more worker nodes. The control plane is responsible for managing the cluster and the worker nodes are responsible for running the applications.
 
 !!! note
-    You will use kubectl to perform imperative commands to deploy the application. This is good to quickly perform a task, but using declarative configuration files in the form of YAML manifests is the best way to deploy applications in production. You will visit this more in the next few sections.
+    You created a control plane node and joined worker nodes to the cluster using the kubeadm tool in the previous section. 
+
+Be sure to read through the [control plane components](https://kubernetes.io/docs/concepts/architecture/#control-plane-components) and [node components](https://kubernetes.io/docs/concepts/architecture/#node-components) sections of the Kubernetes docs to understand the roles of each component.
+
+Kubernetes has a rich and extensive ecosystem that typically requires dedicated time to master fully. In this workshop, we'll focus on practical fundamentals by deploying our Node.js application to a Kubernetes cluster, giving you hands-on experience with key concepts that matter most for the KCNA exam.
 
 ### Create a Namespace
 
-Namespaces are a way to logically separate resources in a cluster. They are intended for use in environments with many users spread across multiple teams, or projects. Create a Namespace called `myapp` to isolate the resources for our Node.js application by running the following command.
+[Namespaces](https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/) are a way to logically separate resources in a cluster. They are intended for use in environments with many users spread across multiple teams, or projects. 
+
+Create a Namespace called `myapp` to isolate the resources for our Node.js application by running the following command.
 
 ```bash
 kubectl create namespace n345
 ```
 
+!!! tip
+    You will use kubectl to perform imperative commands to deploy the application. This is good to quickly perform a task, but using declarative configuration files in the form of YAML manifests is the best way to deploy applications in production. You will visit this more in the next few sections.
+
 ### Run a container in a Pod
 
-Containers don't run on their own in Kubernetes. They run inside a Pod. A Pod is the smallest deployable unit in Kubernetes and represents a single instance of a running process in your cluster. To run a Pod, the easiest way is to use kubectl, which is the Kubernetes command-line tool that allows you to interact with your cluster and use an imperative command to create a Pod.
+Containers don't run on their own in Kubernetes. They run inside a [Pod](https://kubernetes.io/docs/concepts/workloads/pods/). A Pod is the smallest deployable unit in Kubernetes and represents a single instance of a running process in your cluster. To run a Pod, the easiest way is to use [kubectl](https://kubernetes.io/docs/reference/kubectl/), which is the Kubernetes command-line tool that allows you to interact with your cluster and use an imperative command to create a Pod.
 
 SSH back into the control node and run the following command to create a Pod that runs the Node.js application.
 
@@ -281,7 +290,7 @@ kubectl get pods --namespace n345
 
 ### Expose the Pod with a Service
 
-The Pod is running, but it is not accessible from outside the cluster. To make it accessible, you need to expose the Pod as a Service. A Service in Kubernetes is an abstraction that defines a logical set of Pods and a policy by which to access them.
+The Pod is running, but it isn't accessible from outside the cluster. To make it accessible, you need to expose the Pod as a [Service](https://kubernetes.io/docs/concepts/services-networking/service/). A Service in Kubernetes is an abstraction that defines a logical set of Pods and a policy by which to access them.
 
 Run the following command to expose the Pod as a Service.
 
@@ -293,8 +302,8 @@ kubectl expose pod myapp \
 --target-port=3000
 ```
 
-!!! info
-    Notice that we are using the `--type=NodePort` flag to expose the Pod as a NodePort Service. This means that the Service will be exposed on a port on each Node in the cluster. There are other types of Services, such as ClusterIP and LoadBalancer, and you should read the [Kubernetes documentation](https://kubernetes.io/docs/concepts/services-networking/service/) to learn more about them.
+!!! note
+    Notice that we're using the `--type=NodePort` flag to expose the Pod as a NodePort Service. This means that the Service will be exposed on a port on each Node in the cluster. There are other types of Services, such as ClusterIP and LoadBalancer, and you should read the [Kubernetes documentation](https://kubernetes.io/docs/concepts/services-networking/service/) to learn more about them.
 
 Run the following command to list the Services in your cluster.
 
@@ -311,16 +320,26 @@ myapp   NodePort   10.107.207.155   <none>        80:31519/TCP   4s
 
 The `myapp` Service is now exposed on port `31519` on your virtual machine. You can access the Node.js application by navigating to [http://control:31519](http://control:31519) in your browser.
 
-!!! note
-    Your Service port might be different than `31519`, so make sure to check the output of the `kubectl get services` command and adjust the URL accordingly.
+!!! warning
+    Your Service port might be different than `31519`, so make sure to check the output of the `kubectl get services` command and adjust the URL accordingly. This also assumes you added the control node IP address to your `/etc/hosts` file in the previous section.
+
+You could also generate the URL by running the following command.
+
+```bash
+echo "http://$(kubectl get nodes -o jsonpath='{.items[0].status.addresses[0].address}'):$(kubectl get services myapp -n n345 -o jsonpath='{.spec.ports[0].nodePort}')"
+```
+
+Click the URL in the terminal to access the Node.js application.
 
 ### Scale the application with Deployments and ReplicaSets
 
-Running a single Pod is fine for testing, but in a production environment, you would want to run multiple instances of your application for redundancy and load balancing. You can scale the application by increasing the number of replicas in the Deployment.
+Running a single Pod is fine for testing, but in a production environment, you would want to run multiple instances of your application for redundancy and load balancing. In order to do this, you should deploy the application using a [Deployment](https://kubernetes.io/docs/concepts/workloads/controllers/deployment/). A Deployment manages a [ReplicaSet](https://kubernetes.io/docs/concepts/workloads/controllers/replicaset/), which in turn manages the Pods.
 
-Let's create a Deployment that manages the Pods and scale the application to three replicas.
+When working with Deployments, you can scale the application by increasing the number of replicas.
 
-Run the following command to delete the Pod and Service.
+Let's create a Deployment that manages the Pods and scale the application to three replicas. 
+
+Run the following command to delete the Pod and Service you created earlier.
 
 ```bash
 kubectl delete pod myapp --namespace n345 --wait=false
@@ -343,40 +362,39 @@ Run the following command to list the Deployments in your cluster.
 kubectl get deployments --namespace n345
 ```
 
+Run the following command to list the ReplicaSets in your cluster.
+
+```bash
+kubectl describe replicasets --namespace n345
+```
+
 Now if you check the Pods, you should see three Pods running.
 
 ```bash
 kubectl get pods --namespace n345
 ```
 
-Did you notice that the Pods have different names? Kubernetes automatically generates a unique name for each replica. A replica is a copy of the Pod that is managed by a ReplicaSet. So from a mental model perspective, you can think of a Deployment as a higher-level abstraction that manages a ReplicaSet, which in turn manages the Pods. You can see this relationship by running the following command. 
-
-```bash
-kubectl describe replicasets --namespace n345
-```
-
-You should see that the ReplicaSet is "Controlled By" the `myapp` Deployment.
+Did you notice that the Pods have different names? Kubernetes automatically generates a unique name for each replica.
 
 ### Exposing web applications with Ingress
 
-In the section above, we exposed the Node.js application Pod using a Service. You can also expose the Deployment as a Service, but when it comes to exposing web applications, it is common to use Ingress.
+While Services provide basic network access to Pods, Ingress offers a more sophisticated way to expose HTTP/HTTPS applications by providing routing based on hostnames and paths.
 
-Ingress is an API object that manages external access to services in a cluster. It provides HTTP and HTTPS routing to Services based on hostnames and paths. Ingress is often configured to provide load balancing, SSL termination, and name-based virtual hosting.
+Ingress works through two components:
 
-To use Ingress, you need to have an Ingress Controller running in your cluster. The Ingress Controller is a daemon that watches the Kubernetes API server for Ingress resources and updates the configuration of a load balancer in the cluster. You will also need to have a Service in place that the Ingress Controller can route traffic to.
+1. **[Ingress](https://kubernetes.io/docs/concepts/services-networking/ingress/) resource**: The API object that defines routing rules
+2. **[Ingress Controller](https://kubernetes.io/docs/concepts/services-networking/ingress-controllers/)**: The implementation that enforces these rules (you installed Ingress-Nginx Controller earlier)
 
-Run the following command to create an Ingress resource that routes traffic to the `myapp` Service.
+Let's expose our application using Ingress.
 
 ```bash
+# First create a Service for our deployment
 kubectl expose deployment myapp \
 --namespace n345 \
 --port=80 \
 --target-port=3000
-```
 
-Run the following command to create an Ingress resource that routes traffic to the `myapp` Service.
-
-```bash
+# Then create an Ingress resource pointing to that Service
 kubectl create ingress myapp \
 --namespace n345 \
 --class=nginx \
@@ -413,13 +431,15 @@ kubectl create ns pets
 kubectl apply -n pets -f https://gist.githubusercontent.com/pauldotyu/bfa405733af19bc80c357d6aab5847c7/raw/3f0dd08fcc7a0fb1662369efd0ab47c8b4d0d533/aks-store-demo.yaml
 ```
 
-Run the following command to list the Deployments in the `pets` namespace.
+Run the following command to list the Pods in the `pets` namespace.
 
 ```bash
-kubectl get deployments -n pets
+kubectl get pods -n pets
 ```
 
-The application is made up of multiple Deployments, each managing a set of Pods. There is a store-front web app written using NodeJS that is main user interface for a customer. Products are retrieved using a REST API provided by the product-service which is written in Rust. Orders are processed via the order-service which is also a REST API which is an ExpressJS app which sends order messages to RabbitMQ which is a commonly used message broker. So each of these components are written in different languages and are deployed as separate microservices but connected together via APIs to form a complete application. 
+The application is made up of multiple microservices. There is a store-front web app written using NodeJS that is the main user interface for a customer. Products are retrieved using a REST API provided by the product-service which is written in Rust. Orders are processed via the order-service, a REST API built with ExpressJS that sends order messages to RabbitMQ (a commonly used message broker). So each of these components is written in different languages and are deployed as separate microservices but connected together via APIs to form a complete application. 
+
+![AKS Store Demo application architecture](https://learn.microsoft.com/en-us/azure/aks/media/container-service-kubernetes-tutorials/aks-store-architecture.png)
 
 Access the application by navigating to the Ingress IP address in your browser. Run the following command to get the URL based on the IP address of Ingress in the `pets` namespace.
 
@@ -429,25 +449,144 @@ echo "http://$(kubectl get ingress -n pets store-front -o jsonpath='{.status.loa
 
 ## Cloud Native observability tools
 
-Observability is the ability to understand the internal state of a system by examining the outputs of its components. In a Cloud Native environment, where applications are distributed and run across multiple containers, it is important to have tools that provide visibility into the system. Some of the key observability tools include:
+Observability is the ability to understand the internal state of a system by examining the outputs of its components. In a Cloud Native environment, where applications are distributed and run across multiple containers, it's essential to have tools that provide visibility into the system.
 
-- [Prometheus](https://prometheus.io/docs/introduction/overview/): A time-series database that collects metrics from monitored targets commonly used for monitoring Kubernetes clusters.
-- [Grafana](https://grafana.com/docs/grafana-cloud/monitor-infrastructure/kubernetes-monitoring/): A visualization tool that works with Prometheus to create visualizations and dashboards.
-- [Jaeger](https://www.jaegertracing.io/docs/2.3/): A distributed tracing system that helps you monitor and troubleshoot transactions in complex systems.
-- [Fluentd](https://docs.fluentd.org/): A data collector that unifies data collection and consumption for better use and understanding of data.
+### The Three Pillars of Observability
+
+Modern observability is built on three foundational pillars:
+
+1. **Metrics**: Numerical data measured over time (e.g., CPU usage, request count)
+2. **Logs**: Text records of discrete events that happened in the system
+3. **Traces**: Records of requests as they flow through distributed systems
+
+Understanding these pillars and how they complement each other is crucial for monitoring complex Cloud Native applications.
+
+**Reference:** [https://www.techtarget.com/searchitoperations/tip/The-3-pillars-of-observability-Logs-metrics-and-traces](https://www.techtarget.com/searchitoperations/tip/The-3-pillars-of-observability-Logs-metrics-and-traces)
+
+### Key Observability Tools
+
+**Metrics Collection and Visualization**
+
+[Prometheus](https://prometheus.io/docs/introduction/overview/): An open-source time-series database that collects metrics from monitored targets using a pull model. Prometheus features a powerful query language (PromQL) and is the de facto standard for Kubernetes monitoring.
+
+[Grafana](https://grafana.com/docs/grafana-cloud/monitor-infrastructure/kubernetes-monitoring/): A visualization platform that connects to various data sources including Prometheus. Grafana allows you to create customizable dashboards with alerts and notifications.
+
+Many Kubernetes environments use the [kube-prometheus-stack](https://github.com/prometheus-community/helm-charts/tree/main/charts/kube-prometheus-stack) Helm chart to deploy a pre-configured observability solution including Prometheus, Grafana, and Alertmanager.
+
+**Distributed Tracing**
+
+[Jaeger](https://www.jaegertracing.io/docs/2.3/): A distributed tracing system inspired by Google's Dapper paper. Jaeger helps track requests across microservices and visualize service dependencies.
+
+[OpenTelemetry](https://opentelemetry.io/): A CNCF project that provides a unified set of APIs and libraries for collecting telemetry data including traces, metrics, and logs.
+
+**Log Collection and Analysis**
+
+[Fluentd](https://docs.fluentd.org/): A CNCF graduated project that collects, processes, and forwards logs to multiple destinations.
+
+[Elasticsearch, Logstash, and Kibana (ELK Stack)](https://www.elastic.co/elastic-stack): A popular stack for log collection, processing, storage, and visualization.
+
+### Practical Application
+
+For the KCNA exam, understanding the high-level concepts of these tools and how they contribute to observability in Cloud Native environments is important. By understanding the capabilities and use cases of these tools, you'll be better prepared for the observability section of the KCNA exam but you won't be expected to know the specifics of each tool.
 
 ## Cloud Native application delivery tools
 
-Application delivery is the process of getting software into the hands of users in a safe and reliable way. In a Cloud Native environment, where applications are built and deployed using containers, it is important to have tools that automate the delivery process. Some of the key application delivery tools include:
+Application delivery is the process of getting software into the hands of users in a safe and reliable way. In a Cloud Native environment, this encompasses everything from building and packaging applications to deploying and operating them continuously.
 
-- [Helm](https://helm.sh/): A package manager for Kubernetes that helps you define, install, and upgrade applications.
-- [Kustomize](https://kubectl.docs.kubernetes.io/guides/introduction/kustomize/): A tool that lets you customize Kubernetes resources through a kustomization file.
-- [ArgoCD](https://argo-cd.readthedocs.io/en/stable/): A declarative, GitOps continuous delivery tool for Kubernetes.
-- [Flux](https://fluxcd.io/flux/concepts/): A tool that automatically ensures that the state of your Kubernetes cluster matches the configuration you've supplied in Git.
+### Continuous Integration and Continuous Delivery (CI/CD)
+
+CI/CD forms the foundation of modern application delivery, automating the build, test, and deployment processes. In Cloud Native environments, CI/CD pipelines typically involve:
+
+1. **Continuous Integration**: Automatically building and testing code changes
+2. **Continuous Delivery**: Automatically deploying application changes to staging environments
+3. **Continuous Deployment**: Automatically deploying to production environments
+
+**Reference:** [https://www.geeksforgeeks.org/what-is-ci-cd/](https://www.geeksforgeeks.org/what-is-ci-cd/)
+
+### Key Application Delivery Tools
+
+**Package Management and Deployment**
+
+[**Helm**](https://helm.sh/): The de facto package manager for Kubernetes. Helm Charts package Kubernetes resources into reusable, versioned templates that can be easily shared and deployed. Helm simplifies complex deployments through:
+
+- Template-based resource generation
+- Release management with upgrade and rollback capabilities
+- Chart repositories for sharing applications
+
+[**Kustomize**](https://kubectl.docs.kubernetes.io/guides/introduction/kustomize/): Native Kubernetes configuration customization. Unlike Helm, Kustomize doesn't use templates but overlays changes on existing YAML files through:
+
+- Base and overlay configurations
+- Resource patching without modifying original files
+- Environment-specific customizations
+
+**GitOps Tools**
+
+GitOps is an operational framework that uses Git as the single source of truth for declarative infrastructure and applications:
+
+[**ArgoCD**](https://argo-cd.readthedocs.io/en/stable/): A declarative GitOps continuous delivery tool that:
+
+- Automatically synchronizes the desired state from Git to Kubernetes
+- Provides visualization for application state and health
+- Supports multi-cluster deployments and SSO integration
+
+[**Flux**](https://fluxcd.io/flux/concepts/): A set of continuous delivery solutions for Kubernetes that:
+
+- Ensures cluster state matches Git repository configurations
+- Provides automatic image updates based on policies
+- Offers multi-tenancy capabilities with Flux's Kustomize controller
+
+**Build Tools**
+
+[**Buildpacks**](https://buildpacks.io/): A CNCF project that transforms application source code into container images by:
+
+- Detecting the language/framework of your app automatically
+- Adding appropriate runtime dependencies
+- Creating optimized OCI-compliant images without requiring Dockerfiles
+
+[**Kaniko**](https://github.com/GoogleContainerTools/kaniko): A tool for building container images inside Kubernetes or CI environments:
+
+- Builds images without requiring privileged Docker daemon access
+- Creates images layer-by-layer, caching layers when possible
+- Supports cross-architecture builds
+
+**Progressive Delivery**
+
+Progressive delivery extends continuous delivery with controlled rollouts:
+
+[**Flagger**](https://flagger.app/): A progressive delivery operator for Kubernetes that:
+
+- Automates canary releases, A/B testing, and blue/green deployments
+- Integrates with service meshes like Istio, Linkerd, and AWS App Mesh
+- Provides automated rollbacks based on metrics
+
+[**Argo Rollouts**](https://argoproj.github.io/argo-rollouts/): A Kubernetes controller for progressive delivery with:
+
+- Advanced deployment strategies beyond basic Kubernetes deployments
+- Traffic shaping capabilities through integration with service meshes
+- Analysis capabilities to automate promotion or rollback
+
+For the KCNA exam, understanding how these tools fit into the Cloud Native ecosystem is important. In practice, organizations typically combine multiple tools:
+
+- A CI system like GitHub Actions or Jenkins builds container images
+- Artifacts are stored in a container registry
+- Helm or Kustomize packages Kubernetes manifests
+- ArgoCD or Flux applies these manifests to the cluster
+- Progressive delivery tools control how new versions roll out
+
+Many organizations follow the GitOps model where Git repositories contain:
+
+1. Application source code
+2. Container build definitions
+3. Kubernetes manifests (often managed by Helm or Kustomize)
+4. Environment-specific configurations
+
+By understanding these tools and workflows, you'll be better prepared for the application delivery section of the KCNA exam and gain insights into how modern Cloud Native applications are delivered to production environments.
 
 ## Additional resources
 
-There's plenty more to learn about to pass the KCNA exam, but this should give you a good starting point. Go checkout the [CNCF's KCNA curriculum](https://github.com/cncf/curriculum/tree/master/kcna) for more resources.
+- [KCNA Exam Curriculum](https://github.com/cncf/curriculum/blob/master/KCNA_Curriculum.pdf)
+- [KCNA resources](https://github.com/cncf/curriculum/tree/master/kcna) for more resources.
+- [KCNA Certification Learning Path](https://kodekloud.com/learning-path/kcna)
 
 <!-- URLs -->
-[docker-multi-stage-builds]: https://docs.docker.com/get-started/docker-concepts/building-images/multi-stage-builds/
+[http://localhost:3000]: http://localhost:3000

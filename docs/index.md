@@ -3,33 +3,34 @@ hide:
   - feedback
 ---
 
-So you want to become a Kubestronaut? You've landed in the right place!
+## Overview 
 
-The path to Kubernetes certification is challenging but intrinsically rewarding. Passing a Kubernetes certification exam is empowering, especially if you're new to the technology. It demonstrates your ability to deploy, manage, and secure Kubernetes environments, which are essential skills for any cloud-native engineer. 
+So you want to be a [Kubestronaut](https://www.cncf.io/training/kubestronaut/)? You've landed in the right place!
 
-The path to Kubestronaut is definitely an arduous journey that requires dedication, hands-on practice, and a structured approach. This workshop is designed to guide you through that journey, by helping you set up a local Kubernetes lab environment to practice and prepare for the exams. 
+Passing five Kubernetes exams sounds challenging but intrinsically rewarding. Earning a Kubernetes certification is empowering, especially if you're new to the technology. It demonstrates your ability to deploy, manage, and secure Kubernetes environments, which are essential skills for any cloud native engineer. 
 
-I will not cover every single topic in the certification exams in depth, but I will provide some hands-on exercises and tips I think will be helpful based on my own experience from preparing for and passing the exams.
+The path to Kubestronaut is definitely an arduous journey that requires dedication, hands-on practice, and a structured approach. This workshop is designed to kick start your journey, by helping you set up a local Kubernetes lab environment to practice and prepare for the exams. 
 
-This workshop started as a series of blog posts on my blog site [https://paulyu.dev](https://paulyu.dev) so you can find the original content there as well as other cloud native content.
+I won't cover every single certification exams topic in depth, but I will provide some hands-on exercises and tips I think will be helpful based on my own experience from preparing for and passing the exams.
 
 ## Learning objectives
 
-My main goal of this workshop is to get you setup with local Kubernetes lab environment and provide you with some hands-on exercises to help you prepare for the exams. Here are some of the learning objectives:
+By the end of this workshop, you'll be able to:
 
-- Set up a complete local Kubernetes development environment using VMware virtualization
-- Install and configure Ubuntu server for use as a Kubernetes node
-- Install and configure a multi-node Kubernetes cluster from scratch using kubeadm with containerd and Cilium
-- Develop practical skills through hands-on exercises to master some tricky Kubernetes tasks required for each certification
-- Understand the differences between the five main Kubernetes certifications and how to prepare for each
-- Learn effective exam strategies, including time management and documentation navigation
+- Set up a local multi-node Kubernetes lab environment using [VMware Desktop Hypervisor](https://www.vmware.com/products/desktop-hypervisor/workstation-and-fusion) 
+- Install and configure [Ubuntu](https://ubuntu.com/download/server) server with proper networking for Kubernetes nodes
+- Build a Kubernetes cluster from scratch using [kubeadm](https://kubernetes.io/docs/reference/setup-tools/kubeadm/) with [containerd](https://containerd.io/) runtime
+- Configure essential cluster components including [Cilium CNI](https://cilium.io/use-cases/cni/), [MetalLB](https://metallb.io/), and [Ingress-Nginx Controller](https://kubernetes.github.io/ingress-nginx/)
+- Practice hands-on exercises commonly found on Kubernetes exams (CKAD, CKA, CKS)
+- Master effective exam techniques, including proper documentation navigation and time management strategies
+- Gain practical troubleshooting experience using tools like vim, sed, systemctl, and journalctl
 
 !!! note 
-    You have other options for running a local Kubernetes lab environment, such as using Minikube, Kind, or K3s. But I chose to use VMware virtualization because it provides a more realistic environment that closely resembles a production cluster.
+    You have other options for running a local Kubernetes lab environment, such as using [Minikube](https://minikube.sigs.k8s.io/docs/), [Kind](https://kind.sigs.k8s.io/), or [K3s](https://k3s.io/). But I chose to bootstrap a cluster with kubeadm on Ubuntu servers because it provides an environment that closely resembles a production cluster.
 
 ## Pre-requisites
 
-Most of the exercises in this workshop will be completed within a virtual machine. But you should also have the following tools also installed on your local machine:
+Most of the exercises in this workshop will be completed within a virtual machine. But you should also have the following tools also installed on your local machine to complete some of the exercises in this workshop:
 
 - POSIX-compliant shell (bash, zsh, etc.)
 - [Docker Desktop](https://www.docker.com/get-started/)
@@ -43,8 +44,9 @@ There are many resources available to help you prepare for the Kubernetes certif
 - [CNCF Kubernetes Certification Programs](https://www.cncf.io/training/certification/) - Official certification information
 - [Kubernetes Documentation](https://kubernetes.io/docs/) - The comprehensive reference you'll use during exams
 - [Killer.sh](https://killer.sh/) - Simulator for CKA, CKAD, and CKS exams (included with exam purchase)
-- [Certified Kubernetes Security Specialist Study Guide](https://github.com/walidshaari/Certified-Kubernetes-Security-Specialist) - Community-maintained CKS resources
 - [Learn Kubernetes Basics](https://kubernetes.io/docs/tutorials/kubernetes-basics/) - Tutorials for beginners
 - [Kubernetes the Hard Way](https://github.com/kelseyhightower/kubernetes-the-hard-way) - Deep-dive guide to manual cluster setup
 
-Let's begin your journey to becoming a Kubestronaut!
+This workshop started as a series of blog posts on my blog site [https://paulyu.dev](https://paulyu.dev) so you can find the original content there as well as other cloud native content.
+
+Let's begin your journey to becoming a Kubestronaut 🚀
