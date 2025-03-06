@@ -1,4 +1,5 @@
 repo_url: https://github.com/pauldotyu/kubestronaut
+edit_uri: edit/main/docs/
 site_name: So you want to be a Kubestronaut
 nav:
   - Getting started: index.md
@@ -21,6 +22,8 @@ theme:
   features:
     - navigation.footer
     - content.code.copy
+    - content.action.edit
+    - content.action.view
   palette:
     # Palette toggle for automatic mode
     - media: "(prefers-color-scheme)"
