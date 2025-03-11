@@ -1,0 +1,1703 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../kubernetes/">
+      
+      
+        <link rel="next" href="../kcsa/">
+      
+      
+      <link rel="icon" href="../assets/kubestronaut-stacked-color.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.7">
+    
+    
+      
+        <title>Kubernetes and Cloud Native Associate (KCNA) - So you want to be a Kubestronaut</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.8608ea7d.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function e(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],e("js",new Date),e("config","G-8TB1PXGXJZ"),document.addEventListener("DOMContentLoaded",(function(){document.forms.search&&document.forms.search.query.addEventListener("blur",(function(){this.value&&e("event","search",{search_term:this.value})}));document$.subscribe((function(){var t=document.forms.feedback;if(void 0!==t)for(var a of t.querySelectorAll("[type=submit]"))a.addEventListener("click",(function(a){a.preventDefault();var n=document.location.pathname,d=this.getAttribute("data-md-value");e("event","feedback",{page:n,data:d}),t.firstElementChild.disabled=!0;var r=t.querySelector(".md-feedback__note [data-md-value='"+d+"']");r&&(r.hidden=!1)})),t.hidden=!1})),location$.subscribe((function(t){e("config","G-8TB1PXGXJZ",{page_path:t.pathname})}))}));var t=document.createElement("script");t.async=!0,t.src="https://www.googletagmanager.com/gtag/js?id=G-8TB1PXGXJZ",document.getElementById("__analytics").insertAdjacentElement("afterEnd",t)}</script>
+  
+    <script>if("undefined"!=typeof __md_analytics){var consent=__md_get("__consent");consent&&consent.analytics&&__md_analytics()}</script>
+  
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#overview" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="So you want to be a Kubestronaut" class="md-header__button md-logo" aria-label="So you want to be a Kubestronaut" data-md-component="logo">
+      
+  <img src="../assets/kubestronaut-stacked-white.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            So you want to be a Kubestronaut
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Kubernetes and Cloud Native Associate (KCNA)
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.3 16-.7-2h-3.2l-.7 2H7.8L11 7h2l3.2 9zM20 8.69V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12zm-9.15 3.96h2.3L12 9z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to system preference"  type="radio" name="__palette" id="__palette_2">
+    
+      <label class="md-header__button md-icon" title="Switch to system preference" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/pauldotyu/kubestronaut" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8M97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="So you want to be a Kubestronaut" class="md-nav__button md-logo" aria-label="So you want to be a Kubestronaut" data-md-component="logo">
+      
+  <img src="../assets/kubestronaut-stacked-white.png" alt="logo">
+
+    </a>
+    So you want to be a Kubestronaut
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/pauldotyu/kubestronaut" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8M97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Getting started
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../vmware/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Install VMware
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ubuntu/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Install Ubuntu Server
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../kubernetes/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Install Kubernetes
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Kubernetes and Cloud Native Associate (KCNA)
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Kubernetes and Cloud Native Associate (KCNA)
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      Overview
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#container-fundamentals" class="md-nav__link">
+    <span class="md-ellipsis">
+      Container fundamentals
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Container fundamentals">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#create-a-simple-nodejs-application" class="md-nav__link">
+    <span class="md-ellipsis">
+      Create a simple Node.js application
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#package-the-application-in-a-container" class="md-nav__link">
+    <span class="md-ellipsis">
+      Package the application in a container
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#multi-stage-builds" class="md-nav__link">
+    <span class="md-ellipsis">
+      Multi-stage builds
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#multi-architecture-builds" class="md-nav__link">
+    <span class="md-ellipsis">
+      Multi-architecture builds
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#container-registries" class="md-nav__link">
+    <span class="md-ellipsis">
+      Container registries
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#kubernetes-fundamentals" class="md-nav__link">
+    <span class="md-ellipsis">
+      Kubernetes fundamentals
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Kubernetes fundamentals">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#architecture-and-components" class="md-nav__link">
+    <span class="md-ellipsis">
+      Architecture and components
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#create-a-namespace" class="md-nav__link">
+    <span class="md-ellipsis">
+      Create a Namespace
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#run-a-container-in-a-pod" class="md-nav__link">
+    <span class="md-ellipsis">
+      Run a container in a Pod
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#expose-the-pod-with-a-service" class="md-nav__link">
+    <span class="md-ellipsis">
+      Expose the Pod with a Service
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#scale-the-application-with-deployments-and-replicasets" class="md-nav__link">
+    <span class="md-ellipsis">
+      Scale the application with Deployments and ReplicaSets
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exposing-web-applications-with-ingress" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exposing web applications with Ingress
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cloud-native-architecture" class="md-nav__link">
+    <span class="md-ellipsis">
+      Cloud Native architecture
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Cloud Native architecture">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#twelve-factor-app" class="md-nav__link">
+    <span class="md-ellipsis">
+      Twelve-factor app
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#microservices" class="md-nav__link">
+    <span class="md-ellipsis">
+      Microservices
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cloud-native-observability-tools" class="md-nav__link">
+    <span class="md-ellipsis">
+      Cloud Native observability tools
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Cloud Native observability tools">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-three-pillars-of-observability" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Three Pillars of Observability
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#key-observability-tools" class="md-nav__link">
+    <span class="md-ellipsis">
+      Key Observability Tools
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#practical-application" class="md-nav__link">
+    <span class="md-ellipsis">
+      Practical Application
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cloud-native-application-delivery-tools" class="md-nav__link">
+    <span class="md-ellipsis">
+      Cloud Native application delivery tools
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Cloud Native application delivery tools">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#continuous-integration-and-continuous-delivery-cicd" class="md-nav__link">
+    <span class="md-ellipsis">
+      Continuous Integration and Continuous Delivery (CI/CD)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#key-application-delivery-tools" class="md-nav__link">
+    <span class="md-ellipsis">
+      Key Application Delivery Tools
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#additional-resources" class="md-nav__link">
+    <span class="md-ellipsis">
+      Additional resources
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../kcsa/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Kubernetes and Cloud Native Security Associate (KCSA)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ckad/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Certified Kubernetes Application Developer (CKAD)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cka/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Certified Kubernetes Administrator (CKA)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cks/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Certified Kubernetes Security Specialist (CKS)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../exam/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Exam tips
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../next/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    What's next?
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      Overview
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#container-fundamentals" class="md-nav__link">
+    <span class="md-ellipsis">
+      Container fundamentals
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Container fundamentals">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#create-a-simple-nodejs-application" class="md-nav__link">
+    <span class="md-ellipsis">
+      Create a simple Node.js application
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#package-the-application-in-a-container" class="md-nav__link">
+    <span class="md-ellipsis">
+      Package the application in a container
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#multi-stage-builds" class="md-nav__link">
+    <span class="md-ellipsis">
+      Multi-stage builds
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#multi-architecture-builds" class="md-nav__link">
+    <span class="md-ellipsis">
+      Multi-architecture builds
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#container-registries" class="md-nav__link">
+    <span class="md-ellipsis">
+      Container registries
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#kubernetes-fundamentals" class="md-nav__link">
+    <span class="md-ellipsis">
+      Kubernetes fundamentals
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Kubernetes fundamentals">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#architecture-and-components" class="md-nav__link">
+    <span class="md-ellipsis">
+      Architecture and components
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#create-a-namespace" class="md-nav__link">
+    <span class="md-ellipsis">
+      Create a Namespace
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#run-a-container-in-a-pod" class="md-nav__link">
+    <span class="md-ellipsis">
+      Run a container in a Pod
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#expose-the-pod-with-a-service" class="md-nav__link">
+    <span class="md-ellipsis">
+      Expose the Pod with a Service
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#scale-the-application-with-deployments-and-replicasets" class="md-nav__link">
+    <span class="md-ellipsis">
+      Scale the application with Deployments and ReplicaSets
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exposing-web-applications-with-ingress" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exposing web applications with Ingress
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cloud-native-architecture" class="md-nav__link">
+    <span class="md-ellipsis">
+      Cloud Native architecture
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Cloud Native architecture">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#twelve-factor-app" class="md-nav__link">
+    <span class="md-ellipsis">
+      Twelve-factor app
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#microservices" class="md-nav__link">
+    <span class="md-ellipsis">
+      Microservices
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cloud-native-observability-tools" class="md-nav__link">
+    <span class="md-ellipsis">
+      Cloud Native observability tools
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Cloud Native observability tools">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-three-pillars-of-observability" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Three Pillars of Observability
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#key-observability-tools" class="md-nav__link">
+    <span class="md-ellipsis">
+      Key Observability Tools
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#practical-application" class="md-nav__link">
+    <span class="md-ellipsis">
+      Practical Application
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cloud-native-application-delivery-tools" class="md-nav__link">
+    <span class="md-ellipsis">
+      Cloud Native application delivery tools
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Cloud Native application delivery tools">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#continuous-integration-and-continuous-delivery-cicd" class="md-nav__link">
+    <span class="md-ellipsis">
+      Continuous Integration and Continuous Delivery (CI/CD)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#key-application-delivery-tools" class="md-nav__link">
+    <span class="md-ellipsis">
+      Key Application Delivery Tools
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#additional-resources" class="md-nav__link">
+    <span class="md-ellipsis">
+      Additional resources
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+    <a href="https://github.com/pauldotyu/kubestronaut/edit/main/docs/kcna.md" title="Edit this page" class="md-content__button md-icon">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
+    </a>
+  
+  
+    
+      
+    
+    <a href="https://github.com/pauldotyu/kubestronaut/raw/main/docs/kcna.md" title="View source of this page" class="md-content__button md-icon">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 18c.56 0 1 .44 1 1s-.44 1-1 1-1-.44-1-1 .44-1 1-1m0-3c-2.73 0-5.06 1.66-6 4 .94 2.34 3.27 4 6 4s5.06-1.66 6-4c-.94-2.34-3.27-4-6-4m0 6.5a2.5 2.5 0 0 1-2.5-2.5 2.5 2.5 0 0 1 2.5-2.5 2.5 2.5 0 0 1 2.5 2.5 2.5 2.5 0 0 1-2.5 2.5M9.27 20H6V4h7v5h5v4.07c.7.08 1.36.25 2 .49V8l-6-6H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h4.5a8.2 8.2 0 0 1-1.23-2"/></svg>
+    </a>
+  
+
+
+  <h1>Kubernetes and Cloud Native Associate (KCNA)</h1>
+
+<h2 id="overview">Overview</h2>
+<p>The KCNA exam is considered to be the entry level exam. It is a multiple choice exam that tests your overall understanding of fundamental Kubernetes and Cloud Native architecture concepts.</p>
+<p>Read through the <a href="https://training.linuxfoundation.org/certification/kubernetes-cloud-native-associate/">Kubernetes and Cloud Native Associate (KCNA)</a> page for Domain and Competency details and information on how to register for the exam.</p>
+<p>Some of the topics that you should be familiar with include:</p>
+<ul>
+<li>Container fundamentals</li>
+<li>Kubernetes fundamentals</li>
+<li>Cloud Native architecture</li>
+<li>Cloud Native observability tools</li>
+<li>Cloud Native application delivery tools</li>
+</ul>
+<p>Let's practice with some exercises to help familiarize yourself with the concepts.</p>
+<h2 id="container-fundamentals">Container fundamentals</h2>
+<p>A <a href="https://kubernetes.io/docs/concepts/containers/">container</a> is an application packaging method that allows you to run an application and its dependencies in an isolated environment. Containers are lightweight and portable, making them ideal for deploying applications in a cloud native environment.</p>
+<p>A container image is defined within a Dockerfile. The Dockerfile contains instructions on how to build the image. The image is then used to create a container.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>This section will require you to work in your local machine (not in the virtual machine) and have Docker and Node.js installed on your local machine.</p>
+<p>If you don't have Docker installed, follow the instructions on the <a href="https://docs.docker.com/get-docker/">Docker installation page</a> to install Docker.</p>
+<p>If you don't have Node.js installed, follow the instructions on the <a href="https://nodejs.org/en/download/">Node.js installation page</a> to install Node.js.</p>
+</div>
+<h3 id="create-a-simple-nodejs-application">Create a simple Node.js application</h3>
+<p>Let's create a simple Node.js application and package it in a container. Open a terminal and follow the steps below:</p>
+<p>On your local machine, create a new directory for the application:</p>
+<div class="highlight"><pre><span></span><code>mkdir<span class="w"> </span>myapp
+<span class="nb">cd</span><span class="w"> </span>myapp
+</code></pre></div>
+<p>Initialize a new Node.js application.</p>
+<div class="highlight"><pre><span></span><code>npm<span class="w"> </span>init<span class="w"> </span>-y
+</code></pre></div>
+<p>Install the <code>express</code> package.</p>
+<div class="highlight"><pre><span></span><code>npm<span class="w"> </span>install<span class="w"> </span>express
+</code></pre></div>
+<p>Create a new directory called <code>src</code>. This is where application source code will live.</p>
+<div class="highlight"><pre><span></span><code>mkdir<span class="w"> </span>src
+<span class="nb">cd</span><span class="w"> </span>src
+</code></pre></div>
+<p>Create a file called <code>server.js</code> and add the following code.</p>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">express</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s2">&quot;express&quot;</span><span class="p">);</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">app</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">express</span><span class="p">();</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">server</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">app</span><span class="p">.</span><span class="nx">listen</span><span class="p">(</span><span class="mf">3000</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`Express running → PORT </span><span class="si">${</span><span class="nx">server</span><span class="p">.</span><span class="nx">address</span><span class="p">().</span><span class="nx">port</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
+<span class="p">});</span>
+<span class="nx">app</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s2">&quot;/&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="nx">req</span><span class="p">,</span><span class="w"> </span><span class="nx">res</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">res</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="s2">&quot;Hello World!&quot;</span><span class="p">);</span>
+<span class="p">});</span>
+</code></pre></div>
+<p>Return to the <code>myapp</code> directory and run the application.</p>
+<div class="highlight"><pre><span></span><code><span class="nb">cd</span><span class="w"> </span>..
+node<span class="w"> </span>src/server.js
+</code></pre></div>
+<p>Open a browser and navigate to <a href="http://localhost:3000" target="_blank">http://localhost:3000</a>. You should see "Hello World!" displayed.</p>
+<p>Press <code>Ctrl+C</code> to stop the application.</p>
+<h3 id="package-the-application-in-a-container">Package the application in a container</h3>
+<p>Now that we have a simple Node.js application, let's package it in a container. We will use Docker to build the container image.</p>
+<p>Create a new file called <code>Dockerfile</code> in the <code>myapp</code> directory and add the following code.</p>
+<div class="highlight"><pre><span></span><code><span class="k">FROM</span><span class="w"> </span><span class="s">node:22</span>
+<span class="k">WORKDIR</span><span class="w"> </span><span class="s">/usr/src/app</span>
+<span class="k">COPY</span><span class="w"> </span>package*.json<span class="w"> </span>./
+<span class="k">RUN</span><span class="w"> </span>npm<span class="w"> </span>install
+<span class="k">EXPOSE</span><span class="w"> </span><span class="s">3000</span>
+<span class="k">COPY</span><span class="w"> </span>.<span class="w"> </span>.
+<span class="k">CMD</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;node&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;src/server.js&quot;</span><span class="p">]</span>
+</code></pre></div>
+<p>Build the container image.</p>
+<div class="highlight"><pre><span></span><code>docker<span class="w"> </span>build<span class="w"> </span>-t<span class="w"> </span>myapp:latest<span class="w"> </span>.
+</code></pre></div>
+<p>Run the application in a container.</p>
+<div class="highlight"><pre><span></span><code>docker<span class="w"> </span>run<span class="w"> </span>-d<span class="w"> </span>-p<span class="w"> </span><span class="m">3000</span>:3000<span class="w"> </span>myapp:latest
+</code></pre></div>
+<p>Open a browser and navigate to <a href="http://localhost:3000" target="_blank">http://localhost:3000</a>. You should see "Hello World!" displayed.</p>
+<p>Run the following command to list the running containers.</p>
+<p><div class="highlight"><pre><span></span><code>docker<span class="w"> </span>ps
+</code></pre></div>
+Run the following command to stop the container.</p>
+<div class="highlight"><pre><span></span><code>docker<span class="w"> </span>stop<span class="w"> </span>&lt;CONTAINER_ID&gt;<span class="w"> </span><span class="c1"># replace &lt;CONTAINER_ID&gt; with the actual container ID</span>
+</code></pre></div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>You don't need to pass in the entire container ID. You can just pass in the first few characters of the container ID.</p>
+</div>
+<h3 id="multi-stage-builds">Multi-stage builds</h3>
+<p>The Dockerfile above is fairly simple, but it can be optimized using multi-stage builds. Multi-stage builds allow you to use multiple <code>FROM</code> statements in a single Dockerfile. This can help reduce the size of the final image and is often used as a best practice in terms of security and performance.</p>
+<p><strong>Reference:</strong> <a href="https://docs.docker.com/get-started/docker-concepts/building-images/multi-stage-builds/">https://docs.docker.com/get-started/docker-concepts/building-images/multi-stage-builds/</a></p>
+<p>Run the following command to list the container images.</p>
+<div class="highlight"><pre><span></span><code>docker<span class="w"> </span>images
+</code></pre></div>
+<p>Note the size of the <code>myapp:latest</code> image is a little over 1.6GB. It is quite large because it contains all the dependencies and build artifacts.</p>
+<p>Open the <code>Dockerfile</code> and replace the contents with the following code.</p>
+<div class="highlight"><pre><span></span><code><span class="c"># Build stage</span>
+<span class="k">FROM</span><span class="w"> </span><span class="s">node:22</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="s">build</span>
+<span class="k">WORKDIR</span><span class="w"> </span><span class="s">/usr/src/app</span>
+<span class="k">COPY</span><span class="w"> </span>package*.json<span class="w"> </span>./
+<span class="k">RUN</span><span class="w"> </span>npm<span class="w"> </span>install
+<span class="k">COPY</span><span class="w"> </span>.<span class="w"> </span>.
+
+<span class="c"># Production stage</span>
+<span class="k">FROM</span><span class="w"> </span><span class="s">node:22-slim</span>
+<span class="k">WORKDIR</span><span class="w"> </span><span class="s">/usr/src/app</span>
+<span class="k">COPY</span><span class="w"> </span>--from<span class="o">=</span>build<span class="w"> </span>/usr/src/app<span class="w"> </span>.
+<span class="k">EXPOSE</span><span class="w"> </span><span class="s">3000</span>
+<span class="k">CMD</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;node&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;src/server.js&quot;</span><span class="p">]</span>
+</code></pre></div>
+<p>This Dockerfile has two stages: a build stage and a production stage. The build stage is used to install dependencies and build the application, while the production stage is used to run the application using a "slim" version of the Node.js image. This often results in a smaller final image size and reduces the attack surface.</p>
+<p>Build the container image again.</p>
+<div class="highlight"><pre><span></span><code>docker<span class="w"> </span>build<span class="w"> </span>-t<span class="w"> </span>myapp:latest<span class="w"> </span>.
+</code></pre></div>
+<p>List the container images again.</p>
+<div class="highlight"><pre><span></span><code>docker<span class="w"> </span>images
+</code></pre></div>
+<p>The size of the <code>myapp:latest</code> image is now a little over 340MB. This is a significant reduction in size. Not only that, but the final image only contains the files needed to run the application, which is a good security practice.</p>
+<p>If you build and run the container image using the same commands as before, you should see the same "Hello World!" message displayed.</p>
+<h3 id="multi-architecture-builds">Multi-architecture builds</h3>
+<p>The promise of containers is that they can run anywhere. But in reality, this isn't always the case. Different operating system architectures require different container images. For example, a container image built for AMD64 architecture won't run on ARM64 architecture.</p>
+<p>Good news is that Docker gives you the ability to build container images for different architectures. The docker CLI includes a plugin feature called buildx that allows you to build multi-arch images. This allows you to run the same container image on different platforms without modification.</p>
+<p>You can create a new buildx builder by running the following command.</p>
+<div class="highlight"><pre><span></span><code>docker<span class="w"> </span>buildx<span class="w"> </span>create<span class="w"> </span>--name<span class="w"> </span>mybuilder<span class="w"> </span>--driver<span class="w"> </span>docker-container<span class="w"> </span>--platform<span class="w"> </span>linux/amd64,linux/arm64,linux/arm64/v8<span class="w"> </span>--bootstrap<span class="w"> </span>--use<span class="w"> </span>--node<span class="w"> </span>mybuilder
+</code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>You can also configure Builders in your Docker Desktop settings.</p>
+</div>
+<p><strong>Reference:</strong> <a href="https://docs.docker.com/buildx/working-with-buildx/">https://docs.docker.com/buildx/working-with-buildx/</a></p>
+<p>Now you can use the new buildx builder to create a multi-arch image.</p>
+<div class="highlight"><pre><span></span><code>docker<span class="w"> </span>buildx<span class="w"> </span>build<span class="w"> </span>--platform<span class="w"> </span>linux/amd64,linux/arm64<span class="w"> </span>--output<span class="w"> </span><span class="nv">type</span><span class="o">=</span>image,push<span class="o">=</span><span class="nb">false</span><span class="w"> </span>-t<span class="w"> </span>myapp:latest<span class="w"> </span>.
+</code></pre></div>
+<p>In the build output you should see that the image is built for both AMD64 and ARM64 architectures.</p>
+<h3 id="container-registries">Container registries</h3>
+<p>Container images can be stored in container registries, such as <a href="https://hub.docker.com/">Docker Hub</a>, a private <a href="https://learn.microsoft.com/azure/container-registry/container-registry-intro">Azure Container Registry</a>, or <a href="https://docs.github.com/packages/working-with-a-github-packages-registry/working-with-the-container-registry">GitHub Container Registry</a>. This allows you to share images with others and deploy them to different environments.</p>
+<p>There are many guides available on how to push and pull images from different container registries. But for this exercise, we'll use <a href="https://ttl.sh/">ttl.sh</a> which is an ephemeral and anonymous container registry offered by friends at <a href="https://www.replicated.com/">Replicated</a>.</p>
+<p>Container images pushed to ttl.sh have a limited lifetime and are automatically deleted after a specified period. So, you need to to give the image a unique repository name and give it a lifetime in the form of a tag. The tag is a string that represents the lifetime of the image. For example, <code>4h</code> means the image will be deleted after 4 hours.</p>
+<p>Run the following commands to create a unique repository name and tag.</p>
+<div class="highlight"><pre><span></span><code><span class="nv">IMG_REPO</span><span class="o">=</span><span class="k">$(</span>uuidgen<span class="w"> </span><span class="p">|</span><span class="w"> </span>tr<span class="w"> </span><span class="s1">&#39;[:upper:]&#39;</span><span class="w"> </span><span class="s1">&#39;[:lower:]&#39;</span><span class="k">)</span>
+<span class="nv">IMG_VERSION</span><span class="o">=</span>4h
+</code></pre></div>
+<p>Build and push the container image to ttl.sh.</p>
+<div class="highlight"><pre><span></span><code>docker<span class="w"> </span>buildx<span class="w"> </span>build<span class="w"> </span>--platform<span class="w"> </span>linux/amd64,linux/arm64<span class="w"> </span>--push<span class="w"> </span>-t<span class="w"> </span>ttl.sh/<span class="si">${</span><span class="nv">IMG_REPO</span><span class="si">}</span>:<span class="si">${</span><span class="nv">IMG_VERSION</span><span class="si">}</span><span class="w"> </span>.
+</code></pre></div>
+<p>Now if you run the following command, you should see the image hosted ttl.sh supports both AMD64 and ARM64 architectures.</p>
+<div class="highlight"><pre><span></span><code>docker<span class="w"> </span>buildx<span class="w"> </span>imagetools<span class="w"> </span>inspect<span class="w"> </span>ttl.sh/<span class="si">${</span><span class="nv">IMG_REPO</span><span class="si">}</span>:<span class="si">${</span><span class="nv">IMG_VERSION</span><span class="si">}</span>
+</code></pre></div>
+<p>Run the following command to print the container image you pushed to ttl.sh and copy the output of the command to a text file for future reference.</p>
+<div class="highlight"><pre><span></span><code><span class="nb">echo</span><span class="w"> </span>ttl.sh/<span class="si">${</span><span class="nv">IMG_REPO</span><span class="si">}</span>:<span class="si">${</span><span class="nv">IMG_VERSION</span><span class="si">}</span>
+</code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Remember this container image will be deleted after 4 hours.</p>
+</div>
+<h2 id="kubernetes-fundamentals">Kubernetes fundamentals</h2>
+<p>Now that you have a basic understanding of containers, let's move on to Kubernetes. Kubernetes is an open-source container orchestration platform that automates the deployment, scaling, and management of containerized applications.</p>
+<h3 id="architecture-and-components">Architecture and components</h3>
+<p>Quickly review the <a href="https://kubernetes.io/docs/concepts/architecture/">Kubernetes Architecture</a> documentation to understand the key components of a Kubernetes cluster. It is a great way to get started with Kubernetes and will help you understand the basic concepts.</p>
+<p>The cluster is made up of a control plane and one or more worker nodes. The control plane is responsible for managing the cluster and the worker nodes are responsible for running the applications.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>You created a control plane node and joined worker nodes to the cluster using the kubeadm tool in the previous section. </p>
+</div>
+<p>Be sure to read through the <a href="https://kubernetes.io/docs/concepts/architecture/#control-plane-components">control plane components</a> and <a href="https://kubernetes.io/docs/concepts/architecture/#node-components">node components</a> sections of the Kubernetes docs to understand the roles of each component.</p>
+<p>Kubernetes has a rich and extensive ecosystem that typically requires dedicated time to master fully. In this workshop, we'll focus on practical fundamentals by deploying our Node.js application to a Kubernetes cluster, giving you hands-on experience with key concepts that matter most for the KCNA exam.</p>
+<h3 id="create-a-namespace">Create a Namespace</h3>
+<p><a href="https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/">Namespaces</a> are a way to logically separate resources in a cluster. They are intended for use in environments with many users spread across multiple teams, or projects. </p>
+<p>Create a Namespace called <code>myapp</code> to isolate the resources for our Node.js application by running the following command.</p>
+<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>create<span class="w"> </span>namespace<span class="w"> </span>n345
+</code></pre></div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>You will use kubectl to perform imperative commands to deploy the application. This is good to quickly perform a task, but using declarative configuration files in the form of YAML manifests is the best way to deploy applications in production. You will visit this more in the next few sections.</p>
+</div>
+<h3 id="run-a-container-in-a-pod">Run a container in a Pod</h3>
+<p>Containers don't run on their own in Kubernetes. They run inside a <a href="https://kubernetes.io/docs/concepts/workloads/pods/">Pod</a>. A Pod is the smallest deployable unit in Kubernetes and represents a single instance of a running process in your cluster. To run a Pod, the easiest way is to use <a href="https://kubernetes.io/docs/reference/kubectl/">kubectl</a>, which is the Kubernetes command-line tool that allows you to interact with your cluster and use an imperative command to create a Pod.</p>
+<p>SSH back into the control node and run the following command to create a Pod that runs the Node.js application.</p>
+<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>run<span class="w"> </span>myapp<span class="w"> </span><span class="se">\</span>
+--namespace<span class="w"> </span>n345<span class="w"> </span><span class="se">\</span>
+--image<span class="o">=</span>&lt;PASTE_IN_YOUR_CONTAINER_IMAGE_NAME&gt;<span class="w"> </span><span class="se">\</span>
+--port<span class="o">=</span><span class="m">3000</span>
+</code></pre></div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Make sure you are connected to your virtual machine using SSH.</p>
+</div>
+<p>Run the following command to list the Pods in your cluster.</p>
+<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>get<span class="w"> </span>pods<span class="w"> </span>--namespace<span class="w"> </span>n345
+</code></pre></div>
+<h3 id="expose-the-pod-with-a-service">Expose the Pod with a Service</h3>
+<p>The Pod is running, but it isn't accessible from outside the cluster. To make it accessible, you need to expose the Pod as a <a href="https://kubernetes.io/docs/concepts/services-networking/service/">Service</a>. A Service in Kubernetes is an abstraction that defines a logical set of Pods and a policy by which to access them.</p>
+<p>Run the following command to expose the Pod as a Service.</p>
+<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>expose<span class="w"> </span>pod<span class="w"> </span>myapp<span class="w"> </span><span class="se">\</span>
+--namespace<span class="w"> </span>n345<span class="w"> </span><span class="se">\</span>
+--type<span class="o">=</span>NodePort<span class="w"> </span><span class="se">\</span>
+--port<span class="o">=</span><span class="m">80</span><span class="w"> </span><span class="se">\</span>
+--target-port<span class="o">=</span><span class="m">3000</span>
+</code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Notice that we're using the <code>--type=NodePort</code> flag to expose the Pod as a NodePort Service. This means that the Service will be exposed on a port on each Node in the cluster. There are other types of Services, such as ClusterIP and LoadBalancer, and you should read the <a href="https://kubernetes.io/docs/concepts/services-networking/service/">Kubernetes documentation</a> to learn more about them.</p>
+</div>
+<p>Run the following command to list the Services in your cluster.</p>
+<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>get<span class="w"> </span>services<span class="w"> </span>--namespace<span class="w"> </span>n345
+</code></pre></div>
+<p>You will see output similar to the following:</p>
+<div class="highlight"><pre><span></span><code>NAME    TYPE       CLUSTER-IP       EXTERNAL-IP   PORT(S)        AGE
+myapp   NodePort   10.107.207.155   &lt;none&gt;        80:31519/TCP   4s
+</code></pre></div>
+<p>The <code>myapp</code> Service is now exposed on port <code>31519</code> on your virtual machine. You can access the Node.js application by navigating to <a href="http://control:31519">http://control:31519</a> in your browser.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Your Service port might be different than <code>31519</code>, so make sure to check the output of the <code>kubectl get services</code> command and adjust the URL accordingly. This also assumes you added the control node IP address to your <code>/etc/hosts</code> file in the previous section.</p>
+</div>
+<p>You could also generate the URL by running the following command.</p>
+<div class="highlight"><pre><span></span><code><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;http://</span><span class="k">$(</span>kubectl<span class="w"> </span>get<span class="w"> </span>nodes<span class="w"> </span>-o<span class="w"> </span><span class="nv">jsonpath</span><span class="o">=</span><span class="s1">&#39;{.items[0].status.addresses[0].address}&#39;</span><span class="k">)</span><span class="s2">:</span><span class="k">$(</span>kubectl<span class="w"> </span>get<span class="w"> </span>services<span class="w"> </span>myapp<span class="w"> </span>-n<span class="w"> </span>n345<span class="w"> </span>-o<span class="w"> </span><span class="nv">jsonpath</span><span class="o">=</span><span class="s1">&#39;{.spec.ports[0].nodePort}&#39;</span><span class="k">)</span><span class="s2">&quot;</span>
+</code></pre></div>
+<p>Click the URL in the terminal to access the Node.js application.</p>
+<h3 id="scale-the-application-with-deployments-and-replicasets">Scale the application with Deployments and ReplicaSets</h3>
+<p>Running a single Pod is fine for testing, but in a production environment, you would want to run multiple instances of your application for redundancy and load balancing. In order to do this, you should deploy the application using a <a href="https://kubernetes.io/docs/concepts/workloads/controllers/deployment/">Deployment</a>. A Deployment manages a <a href="https://kubernetes.io/docs/concepts/workloads/controllers/replicaset/">ReplicaSet</a>, which in turn manages the Pods.</p>
+<p>When working with Deployments, you can scale the application by increasing the number of replicas.</p>
+<p>Let's create a Deployment that manages the Pods and scale the application to three replicas. </p>
+<p>Run the following command to delete the Pod and Service you created earlier.</p>
+<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>delete<span class="w"> </span>pod<span class="w"> </span>myapp<span class="w"> </span>--namespace<span class="w"> </span>n345<span class="w"> </span>--wait<span class="o">=</span><span class="nb">false</span>
+kubectl<span class="w"> </span>delete<span class="w"> </span>service<span class="w"> </span>myapp<span class="w"> </span>--namespace<span class="w"> </span>n345<span class="w"> </span>--wait<span class="o">=</span><span class="nb">false</span>
+</code></pre></div>
+<p>Run the following command to create a Deployment that manages the Pods.</p>
+<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>create<span class="w"> </span>deployment<span class="w"> </span>myapp<span class="w"> </span><span class="se">\</span>
+--namespace<span class="w"> </span>n345<span class="w"> </span><span class="se">\</span>
+--image<span class="o">=</span>&lt;PASTE_IN_YOUR_CONTAINER_IMAGE_NAME&gt;<span class="w"> </span><span class="se">\</span>
+--replicas<span class="o">=</span><span class="m">3</span><span class="w"> </span><span class="se">\</span>
+--port<span class="o">=</span><span class="m">3000</span>
+</code></pre></div>
+<p>Run the following command to list the Deployments in your cluster.</p>
+<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>get<span class="w"> </span>deployments<span class="w"> </span>--namespace<span class="w"> </span>n345
+</code></pre></div>
+<p>Run the following command to list the ReplicaSets in your cluster.</p>
+<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>describe<span class="w"> </span>replicasets<span class="w"> </span>--namespace<span class="w"> </span>n345
+</code></pre></div>
+<p>Now if you check the Pods, you should see three Pods running.</p>
+<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>get<span class="w"> </span>pods<span class="w"> </span>--namespace<span class="w"> </span>n345
+</code></pre></div>
+<p>Did you notice that the Pods have different names? Kubernetes automatically generates a unique name for each replica.</p>
+<h3 id="exposing-web-applications-with-ingress">Exposing web applications with Ingress</h3>
+<p>While Services provide basic network access to Pods, Ingress offers a more sophisticated way to expose HTTP/HTTPS applications by providing routing based on hostnames and paths.</p>
+<p>Ingress works through two components:</p>
+<ol>
+<li><strong><a href="https://kubernetes.io/docs/concepts/services-networking/ingress/">Ingress</a> resource</strong>: The API object that defines routing rules</li>
+<li><strong><a href="https://kubernetes.io/docs/concepts/services-networking/ingress-controllers/">Ingress Controller</a></strong>: The implementation that enforces these rules (you installed Ingress-Nginx Controller earlier)</li>
+</ol>
+<p>Let's expose our application using Ingress.</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># First create a Service for our deployment</span>
+kubectl<span class="w"> </span>expose<span class="w"> </span>deployment<span class="w"> </span>myapp<span class="w"> </span><span class="se">\</span>
+--namespace<span class="w"> </span>n345<span class="w"> </span><span class="se">\</span>
+--port<span class="o">=</span><span class="m">80</span><span class="w"> </span><span class="se">\</span>
+--target-port<span class="o">=</span><span class="m">3000</span>
+
+<span class="c1"># Then create an Ingress resource pointing to that Service</span>
+kubectl<span class="w"> </span>create<span class="w"> </span>ingress<span class="w"> </span>myapp<span class="w"> </span><span class="se">\</span>
+--namespace<span class="w"> </span>n345<span class="w"> </span><span class="se">\</span>
+--class<span class="o">=</span>nginx<span class="w"> </span><span class="se">\</span>
+--rule<span class="o">=</span><span class="s2">&quot;myapp.example.com/*=myapp:80&quot;</span>
+</code></pre></div>
+<p>Now you can access the Node.js application from your local machine using the following curl command.</p>
+<div class="highlight"><pre><span></span><code>curl<span class="w"> </span>http://control<span class="w"> </span>-H<span class="w"> </span><span class="s1">&#39;Host: myapp.example.com&#39;</span>
+</code></pre></div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Run this command from your local machine, not the virtual machine.</p>
+</div>
+<h2 id="cloud-native-architecture">Cloud Native architecture</h2>
+<p>Cloud Native architecture is a design philosophy that leverages cloud computing principles to build and run scalable applications in modern environments. It's a set of practices that help organizations deliver applications faster and more reliably.</p>
+<h3 id="twelve-factor-app">Twelve-factor app</h3>
+<p>It will be good to understand some of the key concepts of the <a href="https://12factor.net/">Twelve-factor app</a> and how they apply to Cloud Native architecture.</p>
+<h3 id="microservices">Microservices</h3>
+<p>One important element of the Twelve-factor app architecture is treating applications as a set of loosely coupled services. This is also known as the microservices architecture. Microservices are small, independent services that work together to form a larger application. They communicate with each other over a network, typically using HTTP or messaging protocols. With microservices, you can break down complex applications into smaller, more manageable components. This allows you to develop, deploy, and scale each component independently.</p>
+<p>This architectural approach is demonstrated in the <a href="https://github.com/Azure-Samples/aks-store-demo?tab=readme-ov-file#architecture">AKS Store Demo</a> app. </p>
+<p>Run the following command to deploy this sample application to your Kubernetes cluster.</p>
+<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>create<span class="w"> </span>ns<span class="w"> </span>pets
+kubectl<span class="w"> </span>apply<span class="w"> </span>-n<span class="w"> </span>pets<span class="w"> </span>-f<span class="w"> </span>https://gist.githubusercontent.com/pauldotyu/bfa405733af19bc80c357d6aab5847c7/raw/3f0dd08fcc7a0fb1662369efd0ab47c8b4d0d533/aks-store-demo.yaml
+</code></pre></div>
+<p>Run the following command to list the Pods in the <code>pets</code> namespace.</p>
+<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>get<span class="w"> </span>pods<span class="w"> </span>-n<span class="w"> </span>pets
+</code></pre></div>
+<p>The application is made up of multiple microservices. There is a store-front web app written using NodeJS that is the main user interface for a customer. Products are retrieved using a REST API provided by the product-service which is written in Rust. Orders are processed via the order-service, a REST API built with ExpressJS that sends order messages to RabbitMQ (a commonly used message broker). So each of these components is written in different languages and are deployed as separate microservices but connected together via APIs to form a complete application. </p>
+<p><img alt="AKS Store Demo application architecture" src="https://learn.microsoft.com/en-us/azure/aks/media/container-service-kubernetes-tutorials/aks-store-architecture.png" /></p>
+<p>Access the application by navigating to the Ingress IP address in your browser. Run the following command to get the URL based on the IP address of Ingress in the <code>pets</code> namespace.</p>
+<div class="highlight"><pre><span></span><code><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;http://</span><span class="k">$(</span>kubectl<span class="w"> </span>get<span class="w"> </span>ingress<span class="w"> </span>-n<span class="w"> </span>pets<span class="w"> </span>store-front<span class="w"> </span>-o<span class="w"> </span><span class="nv">jsonpath</span><span class="o">=</span><span class="s1">&#39;{.status.loadBalancer.ingress[0].ip}&#39;</span><span class="k">)</span><span class="s2">&quot;</span>
+</code></pre></div>
+<h2 id="cloud-native-observability-tools">Cloud Native observability tools</h2>
+<p>Observability is the ability to understand the internal state of a system by examining the outputs of its components. In a Cloud Native environment, where applications are distributed and run across multiple containers, it's essential to have tools that provide visibility into the system.</p>
+<h3 id="the-three-pillars-of-observability">The Three Pillars of Observability</h3>
+<p>Modern observability is built on three foundational pillars:</p>
+<ol>
+<li><strong>Metrics</strong>: Numerical data measured over time (e.g., CPU usage, request count)</li>
+<li><strong>Logs</strong>: Text records of discrete events that happened in the system</li>
+<li><strong>Traces</strong>: Records of requests as they flow through distributed systems</li>
+</ol>
+<p>Understanding these pillars and how they complement each other is crucial for monitoring complex Cloud Native applications.</p>
+<p><strong>Reference:</strong> <a href="https://www.techtarget.com/searchitoperations/tip/The-3-pillars-of-observability-Logs-metrics-and-traces">https://www.techtarget.com/searchitoperations/tip/The-3-pillars-of-observability-Logs-metrics-and-traces</a></p>
+<h3 id="key-observability-tools">Key Observability Tools</h3>
+<p><strong>Metrics Collection and Visualization</strong></p>
+<p><a href="https://prometheus.io/docs/introduction/overview/">Prometheus</a>: An open-source time-series database that collects metrics from monitored targets using a pull model. Prometheus features a powerful query language (PromQL) and is the de facto standard for Kubernetes monitoring.</p>
+<p><a href="https://grafana.com/docs/grafana-cloud/monitor-infrastructure/kubernetes-monitoring/">Grafana</a>: A visualization platform that connects to various data sources including Prometheus. Grafana allows you to create customizable dashboards with alerts and notifications.</p>
+<p>Many Kubernetes environments use the <a href="https://github.com/prometheus-community/helm-charts/tree/main/charts/kube-prometheus-stack">kube-prometheus-stack</a> Helm chart to deploy a pre-configured observability solution including Prometheus, Grafana, and Alertmanager.</p>
+<p><strong>Distributed Tracing</strong></p>
+<p><a href="https://www.jaegertracing.io/docs/2.3/">Jaeger</a>: A distributed tracing system inspired by Google's Dapper paper. Jaeger helps track requests across microservices and visualize service dependencies.</p>
+<p><a href="https://opentelemetry.io/">OpenTelemetry</a>: A CNCF project that provides a unified set of APIs and libraries for collecting telemetry data including traces, metrics, and logs.</p>
+<p><strong>Log Collection and Analysis</strong></p>
+<p><a href="https://docs.fluentd.org/">Fluentd</a>: A CNCF graduated project that collects, processes, and forwards logs to multiple destinations.</p>
+<p><a href="https://www.elastic.co/elastic-stack">Elasticsearch, Logstash, and Kibana (ELK Stack)</a>: A popular stack for log collection, processing, storage, and visualization.</p>
+<h3 id="practical-application">Practical Application</h3>
+<p>For the KCNA exam, understanding the high-level concepts of these tools and how they contribute to observability in Cloud Native environments is important. By understanding the capabilities and use cases of these tools, you'll be better prepared for the observability section of the KCNA exam but you won't be expected to know the specifics of each tool.</p>
+<h2 id="cloud-native-application-delivery-tools">Cloud Native application delivery tools</h2>
+<p>Application delivery is the process of getting software into the hands of users in a safe and reliable way. In a Cloud Native environment, this encompasses everything from building and packaging applications to deploying and operating them continuously.</p>
+<h3 id="continuous-integration-and-continuous-delivery-cicd">Continuous Integration and Continuous Delivery (CI/CD)</h3>
+<p>CI/CD forms the foundation of modern application delivery, automating the build, test, and deployment processes. In Cloud Native environments, CI/CD pipelines typically involve:</p>
+<ol>
+<li><strong>Continuous Integration</strong>: Automatically building and testing code changes</li>
+<li><strong>Continuous Delivery</strong>: Automatically deploying application changes to staging environments</li>
+<li><strong>Continuous Deployment</strong>: Automatically deploying to production environments</li>
+</ol>
+<p><strong>Reference:</strong> <a href="https://www.geeksforgeeks.org/what-is-ci-cd/">https://www.geeksforgeeks.org/what-is-ci-cd/</a></p>
+<h3 id="key-application-delivery-tools">Key Application Delivery Tools</h3>
+<p><strong>Package Management and Deployment</strong></p>
+<p><a href="https://helm.sh/"><strong>Helm</strong></a>: The de facto package manager for Kubernetes. Helm Charts package Kubernetes resources into reusable, versioned templates that can be easily shared and deployed. Helm simplifies complex deployments through:</p>
+<ul>
+<li>Template-based resource generation</li>
+<li>Release management with upgrade and rollback capabilities</li>
+<li>Chart repositories for sharing applications</li>
+</ul>
+<p><a href="https://kubectl.docs.kubernetes.io/guides/introduction/kustomize/"><strong>Kustomize</strong></a>: Native Kubernetes configuration customization. Unlike Helm, Kustomize doesn't use templates but overlays changes on existing YAML files through:</p>
+<ul>
+<li>Base and overlay configurations</li>
+<li>Resource patching without modifying original files</li>
+<li>Environment-specific customizations</li>
+</ul>
+<p><strong>GitOps Tools</strong></p>
+<p>GitOps is an operational framework that uses Git as the single source of truth for declarative infrastructure and applications:</p>
+<p><a href="https://argo-cd.readthedocs.io/en/stable/"><strong>ArgoCD</strong></a>: A declarative GitOps continuous delivery tool that:</p>
+<ul>
+<li>Automatically synchronizes the desired state from Git to Kubernetes</li>
+<li>Provides visualization for application state and health</li>
+<li>Supports multi-cluster deployments and SSO integration</li>
+</ul>
+<p><a href="https://fluxcd.io/flux/concepts/"><strong>Flux</strong></a>: A set of continuous delivery solutions for Kubernetes that:</p>
+<ul>
+<li>Ensures cluster state matches Git repository configurations</li>
+<li>Provides automatic image updates based on policies</li>
+<li>Offers multi-tenancy capabilities with Flux's Kustomize controller</li>
+</ul>
+<p><strong>Build Tools</strong></p>
+<p><a href="https://buildpacks.io/"><strong>Buildpacks</strong></a>: A CNCF project that transforms application source code into container images by:</p>
+<ul>
+<li>Detecting the language/framework of your app automatically</li>
+<li>Adding appropriate runtime dependencies</li>
+<li>Creating optimized OCI-compliant images without requiring Dockerfiles</li>
+</ul>
+<p><a href="https://github.com/GoogleContainerTools/kaniko"><strong>Kaniko</strong></a>: A tool for building container images inside Kubernetes or CI environments:</p>
+<ul>
+<li>Builds images without requiring privileged Docker daemon access</li>
+<li>Creates images layer-by-layer, caching layers when possible</li>
+<li>Supports cross-architecture builds</li>
+</ul>
+<p><strong>Progressive Delivery</strong></p>
+<p>Progressive delivery extends continuous delivery with controlled rollouts:</p>
+<p><a href="https://flagger.app/"><strong>Flagger</strong></a>: A progressive delivery operator for Kubernetes that:</p>
+<ul>
+<li>Automates canary releases, A/B testing, and blue/green deployments</li>
+<li>Integrates with service meshes like Istio, Linkerd, and AWS App Mesh</li>
+<li>Provides automated rollbacks based on metrics</li>
+</ul>
+<p><a href="https://argoproj.github.io/argo-rollouts/"><strong>Argo Rollouts</strong></a>: A Kubernetes controller for progressive delivery with:</p>
+<ul>
+<li>Advanced deployment strategies beyond basic Kubernetes deployments</li>
+<li>Traffic shaping capabilities through integration with service meshes</li>
+<li>Analysis capabilities to automate promotion or rollback</li>
+</ul>
+<p>For the KCNA exam, understanding how these tools fit into the Cloud Native ecosystem is important. In practice, organizations typically combine multiple tools:</p>
+<ul>
+<li>A CI system like GitHub Actions or Jenkins builds container images</li>
+<li>Artifacts are stored in a container registry</li>
+<li>Helm or Kustomize packages Kubernetes manifests</li>
+<li>ArgoCD or Flux applies these manifests to the cluster</li>
+<li>Progressive delivery tools control how new versions roll out</li>
+</ul>
+<p>Many organizations follow the GitOps model where Git repositories contain:</p>
+<ol>
+<li>Application source code</li>
+<li>Container build definitions</li>
+<li>Kubernetes manifests (often managed by Helm or Kustomize)</li>
+<li>Environment-specific configurations</li>
+</ol>
+<p>By understanding these tools and workflows, you'll be better prepared for the application delivery section of the KCNA exam and gain insights into how modern Cloud Native applications are delivered to production environments.</p>
+<h2 id="additional-resources">Additional resources</h2>
+<ul>
+<li><a href="https://github.com/cncf/curriculum/blob/master/KCNA_Curriculum.pdf">KCNA Exam Curriculum</a></li>
+<li><a href="https://github.com/cncf/curriculum/tree/master/kcna">KCNA resources</a> for more resources.</li>
+<li><a href="https://kodekloud.com/learning-path/kcna">KCNA Certification Learning Path</a></li>
+</ul>
+<!-- URLs -->
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  <form class="md-feedback" name="feedback" hidden>
+    <fieldset>
+      <legend class="md-feedback__title">
+        Was this page helpful?
+      </legend>
+      <div class="md-feedback__inner">
+        <div class="md-feedback__list">
+          
+            <button class="md-feedback__icon md-icon" type="submit" title="This page was helpful" data-md-value="1">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 12a8 8 0 0 0-8-8 8 8 0 0 0-8 8 8 8 0 0 0 8 8 8 8 0 0 0 8-8m2 0a10 10 0 0 1-10 10A10 10 0 0 1 2 12 10 10 0 0 1 12 2a10 10 0 0 1 10 10M10 9.5c0 .8-.7 1.5-1.5 1.5S7 10.3 7 9.5 7.7 8 8.5 8s1.5.7 1.5 1.5m7 0c0 .8-.7 1.5-1.5 1.5S14 10.3 14 9.5 14.7 8 15.5 8s1.5.7 1.5 1.5m-5 7.73c-1.75 0-3.29-.73-4.19-1.81L9.23 14c.45.72 1.52 1.23 2.77 1.23s2.32-.51 2.77-1.23l1.42 1.42c-.9 1.08-2.44 1.81-4.19 1.81"/></svg>
+            </button>
+          
+            <button class="md-feedback__icon md-icon" type="submit" title="This page could be improved" data-md-value="0">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 12a8 8 0 0 0-8-8 8 8 0 0 0-8 8 8 8 0 0 0 8 8 8 8 0 0 0 8-8m2 0a10 10 0 0 1-10 10A10 10 0 0 1 2 12 10 10 0 0 1 12 2a10 10 0 0 1 10 10m-6.5-4c.8 0 1.5.7 1.5 1.5s-.7 1.5-1.5 1.5-1.5-.7-1.5-1.5.7-1.5 1.5-1.5M10 9.5c0 .8-.7 1.5-1.5 1.5S7 10.3 7 9.5 7.7 8 8.5 8s1.5.7 1.5 1.5m2 4.5c1.75 0 3.29.72 4.19 1.81l-1.42 1.42C14.32 16.5 13.25 16 12 16s-2.32.5-2.77 1.23l-1.42-1.42C8.71 14.72 10.25 14 12 14"/></svg>
+            </button>
+          
+        </div>
+        <div class="md-feedback__note">
+          
+            <div data-md-value="1" hidden>
+              
+              
+                
+              
+              Thanks for your feedback!
+            </div>
+          
+            <div data-md-value="0" hidden>
+              
+              
+                
+              
+              Thanks for your feedback! Help us improve this page by using our <a href="..." target="_blank" rel="noopener">feedback form</a>.
+            </div>
+          
+        </div>
+      </div>
+    </fieldset>
+  </form>
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../kubernetes/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Install Kubernetes">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                Install Kubernetes
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../kcsa/" class="md-footer__link md-footer__link--next" aria-label="Next: Kubernetes and Cloud Native Security Associate (KCSA)">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                Kubernetes and Cloud Native Security Associate (KCSA)
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+      <div class="md-consent" data-md-component="consent" id="__consent" hidden>
+        <div class="md-consent__overlay"></div>
+        <aside class="md-consent__inner">
+          <form class="md-consent__form md-grid md-typeset" name="consent">
+            
+
+  
+    
+  
+
+
+  
+    
+  
+
+
+
+
+<h4>Cookie consent</h4>
+<p>I use cookies to recognize your repeated visits and preferences, as well as to measure the effectiveness of the documentation and whether you can find what you're searching for. With your consent, you're helping me to make this site better. Thank you!</p>
+<input class="md-toggle" type="checkbox" id="__settings" >
+<div class="md-consent__settings">
+  <ul class="task-list">
+    
+      
+      
+        
+        
+      
+      <li class="task-list-item">
+        <label class="task-list-control">
+          <input type="checkbox" name="analytics" checked>
+          <span class="task-list-indicator"></span>
+          Google Analytics
+        </label>
+      </li>
+    
+      
+      
+        
+        
+      
+      <li class="task-list-item">
+        <label class="task-list-control">
+          <input type="checkbox" name="github" checked>
+          <span class="task-list-indicator"></span>
+          GitHub
+        </label>
+      </li>
+    
+  </ul>
+</div>
+<div class="md-consent__controls">
+  
+    
+      <button class="md-button md-button--primary">Accept</button>
+    
+    
+    
+  
+    
+    
+    
+      <label class="md-button" for="__settings">Manage settings</label>
+    
+  
+</div>
+          </form>
+        </aside>
+      </div>
+      <script>var consent=__md_get("__consent");if(consent)for(var input of document.forms.consent.elements)input.name&&(input.checked=consent[input.name]||!1);else"file:"!==location.protocol&&setTimeout((function(){document.querySelector("[data-md-component=consent]").hidden=!1}),250);var form=document.forms.consent;for(var action of["submit","reset"])form.addEventListener(action,(function(e){if(e.preventDefault(),"reset"===e.type)for(var n of document.forms.consent.elements)n.name&&(n.checked=!1);__md_set("__consent",Object.fromEntries(Array.from(new FormData(form).keys()).map((function(e){return[e,!0]})))),location.hash="",location.reload()}))</script>
+    
+    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.footer", "content.code.copy", "content.action.edit", "content.action.view"], "search": "../assets/javascripts/workers/search.f8cc74c7.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.c8b220af.min.js"></script>
+      
+    
+  </body>
+</html>

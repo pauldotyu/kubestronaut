@@ -1,0 +1,1628 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../kcsa/">
+      
+      
+        <link rel="next" href="../cka/">
+      
+      
+      <link rel="icon" href="../assets/kubestronaut-stacked-color.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.7">
+    
+    
+      
+        <title>Certified Kubernetes Application Developer (CKAD) - So you want to be a Kubestronaut</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.8608ea7d.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function e(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],e("js",new Date),e("config","G-8TB1PXGXJZ"),document.addEventListener("DOMContentLoaded",(function(){document.forms.search&&document.forms.search.query.addEventListener("blur",(function(){this.value&&e("event","search",{search_term:this.value})}));document$.subscribe((function(){var t=document.forms.feedback;if(void 0!==t)for(var a of t.querySelectorAll("[type=submit]"))a.addEventListener("click",(function(a){a.preventDefault();var n=document.location.pathname,d=this.getAttribute("data-md-value");e("event","feedback",{page:n,data:d}),t.firstElementChild.disabled=!0;var r=t.querySelector(".md-feedback__note [data-md-value='"+d+"']");r&&(r.hidden=!1)})),t.hidden=!1})),location$.subscribe((function(t){e("config","G-8TB1PXGXJZ",{page_path:t.pathname})}))}));var t=document.createElement("script");t.async=!0,t.src="https://www.googletagmanager.com/gtag/js?id=G-8TB1PXGXJZ",document.getElementById("__analytics").insertAdjacentElement("afterEnd",t)}</script>
+  
+    <script>if("undefined"!=typeof __md_analytics){var consent=__md_get("__consent");consent&&consent.analytics&&__md_analytics()}</script>
+  
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#overview" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="So you want to be a Kubestronaut" class="md-header__button md-logo" aria-label="So you want to be a Kubestronaut" data-md-component="logo">
+      
+  <img src="../assets/kubestronaut-stacked-white.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            So you want to be a Kubestronaut
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Certified Kubernetes Application Developer (CKAD)
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.3 16-.7-2h-3.2l-.7 2H7.8L11 7h2l3.2 9zM20 8.69V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12zm-9.15 3.96h2.3L12 9z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to system preference"  type="radio" name="__palette" id="__palette_2">
+    
+      <label class="md-header__button md-icon" title="Switch to system preference" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/pauldotyu/kubestronaut" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8M97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="So you want to be a Kubestronaut" class="md-nav__button md-logo" aria-label="So you want to be a Kubestronaut" data-md-component="logo">
+      
+  <img src="../assets/kubestronaut-stacked-white.png" alt="logo">
+
+    </a>
+    So you want to be a Kubestronaut
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/pauldotyu/kubestronaut" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8M97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Getting started
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../vmware/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Install VMware
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ubuntu/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Install Ubuntu Server
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../kubernetes/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Install Kubernetes
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../kcna/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Kubernetes and Cloud Native Associate (KCNA)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../kcsa/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Kubernetes and Cloud Native Security Associate (KCSA)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Certified Kubernetes Application Developer (CKAD)
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Certified Kubernetes Application Developer (CKAD)
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      Overview
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#deploying-applications" class="md-nav__link">
+    <span class="md-ellipsis">
+      Deploying Applications
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Deploying Applications">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#use-kubectl-to-generate-yaml" class="md-nav__link">
+    <span class="md-ellipsis">
+      Use kubectl to generate YAML
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#use-kubectl-for-reference" class="md-nav__link">
+    <span class="md-ellipsis">
+      Use kubectl for reference
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#configuring-applications" class="md-nav__link">
+    <span class="md-ellipsis">
+      Configuring Applications
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Configuring Applications">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#using-pvs-and-pvcs" class="md-nav__link">
+    <span class="md-ellipsis">
+      Using PVs and PVCs
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#using-configmaps" class="md-nav__link">
+    <span class="md-ellipsis">
+      Using ConfigMaps
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#using-secrets" class="md-nav__link">
+    <span class="md-ellipsis">
+      Using Secrets
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#exposing-applications" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exposing Applications
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Exposing Applications">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#using-services" class="md-nav__link">
+    <span class="md-ellipsis">
+      Using Services
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#using-ingress" class="md-nav__link">
+    <span class="md-ellipsis">
+      Using Ingress
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#securing-network-traffic" class="md-nav__link">
+    <span class="md-ellipsis">
+      Securing network traffic
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Securing network traffic">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#deny-all-ingress-traffic" class="md-nav__link">
+    <span class="md-ellipsis">
+      Deny all ingress traffic
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configure-specific-traffic-patterns" class="md-nav__link">
+    <span class="md-ellipsis">
+      Configure specific traffic patterns
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#additional-resources" class="md-nav__link">
+    <span class="md-ellipsis">
+      Additional Resources
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cka/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Certified Kubernetes Administrator (CKA)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cks/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Certified Kubernetes Security Specialist (CKS)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../exam/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Exam tips
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../next/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    What's next?
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      Overview
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#deploying-applications" class="md-nav__link">
+    <span class="md-ellipsis">
+      Deploying Applications
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Deploying Applications">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#use-kubectl-to-generate-yaml" class="md-nav__link">
+    <span class="md-ellipsis">
+      Use kubectl to generate YAML
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#use-kubectl-for-reference" class="md-nav__link">
+    <span class="md-ellipsis">
+      Use kubectl for reference
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#configuring-applications" class="md-nav__link">
+    <span class="md-ellipsis">
+      Configuring Applications
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Configuring Applications">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#using-pvs-and-pvcs" class="md-nav__link">
+    <span class="md-ellipsis">
+      Using PVs and PVCs
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#using-configmaps" class="md-nav__link">
+    <span class="md-ellipsis">
+      Using ConfigMaps
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#using-secrets" class="md-nav__link">
+    <span class="md-ellipsis">
+      Using Secrets
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#exposing-applications" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exposing Applications
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Exposing Applications">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#using-services" class="md-nav__link">
+    <span class="md-ellipsis">
+      Using Services
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#using-ingress" class="md-nav__link">
+    <span class="md-ellipsis">
+      Using Ingress
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#securing-network-traffic" class="md-nav__link">
+    <span class="md-ellipsis">
+      Securing network traffic
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Securing network traffic">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#deny-all-ingress-traffic" class="md-nav__link">
+    <span class="md-ellipsis">
+      Deny all ingress traffic
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configure-specific-traffic-patterns" class="md-nav__link">
+    <span class="md-ellipsis">
+      Configure specific traffic patterns
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#additional-resources" class="md-nav__link">
+    <span class="md-ellipsis">
+      Additional Resources
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+    <a href="https://github.com/pauldotyu/kubestronaut/edit/main/docs/ckad.md" title="Edit this page" class="md-content__button md-icon">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
+    </a>
+  
+  
+    
+      
+    
+    <a href="https://github.com/pauldotyu/kubestronaut/raw/main/docs/ckad.md" title="View source of this page" class="md-content__button md-icon">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 18c.56 0 1 .44 1 1s-.44 1-1 1-1-.44-1-1 .44-1 1-1m0-3c-2.73 0-5.06 1.66-6 4 .94 2.34 3.27 4 6 4s5.06-1.66 6-4c-.94-2.34-3.27-4-6-4m0 6.5a2.5 2.5 0 0 1-2.5-2.5 2.5 2.5 0 0 1 2.5-2.5 2.5 2.5 0 0 1 2.5 2.5 2.5 2.5 0 0 1-2.5 2.5M9.27 20H6V4h7v5h5v4.07c.7.08 1.36.25 2 .49V8l-6-6H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h4.5a8.2 8.2 0 0 1-1.23-2"/></svg>
+    </a>
+  
+
+
+  <h1>Certified Kubernetes Application Developer (CKAD)</h1>
+
+<h2 id="overview">Overview</h2>
+<p>Once you get past the KCNA and KCSA exams, you should have your sights set on the CKAD exam. This was once considered an entry-level exam but due to its intense hands-on nature, it's better classified as intermediate. Despite this, it makes an excellent starting point for those looking to dive deeper into Kubernetes.</p>
+<p>Read through the <a href="https://training.linuxfoundation.org/certification/certified-kubernetes-application-developer-ckad/">Certified Kubernetes Application Developer (CKAD)</a> page for Domain and Competency details and information on how to register for the exam.</p>
+<p>Some of the hands on activities that you should be comfortable with are:</p>
+<ul>
+<li>Deploying applications and choosing the right workload resource type for the job (i.e., Deployment, StatefulSet, DaemonSet, Job, CronJob)</li>
+<li>Configuring applications using ConfigMaps and Secrets</li>
+<li>Creating and managing Persistent Volumes and Persistent Volume Claims</li>
+<li>Using ServiceAccounts to give applications the right permissions</li>
+<li>Using network policies to restrict traffic to applications</li>
+<li>Using Ingress resources to expose applications to the outside world</li>
+</ul>
+<h2 id="deploying-applications">Deploying Applications</h2>
+<p>A <a href="https://kubernetes.io/docs/concepts/workloads/pods/">Pod</a> is the smallest deployable unit in Kubernetes. It is a logical host for one or more containers which runs your application.</p>
+<p>You would not typically create Pods directly, but rather use a workload resource to manage the pods for you. There are several different types of workload resources in Kubernetes, each with its own use case and knowing when to use each is important. The most common types of workload resources are:</p>
+<ul>
+<li><a href="https://kubernetes.io/docs/concepts/workloads/controllers/deployment/">Deployment</a>: A deployment is a declarative way to manage a set of replicas of a pod. It is the most common way to deploy applications in Kubernetes.</li>
+<li><a href="https://kubernetes.io/docs/concepts/workloads/controllers/replicaset/">ReplicaSet</a>: A replica set is a workload resource that is used to ensure that a specified number of pod replicas are running at any given time. It is used to manage the scaling of applications.</li>
+<li><a href="https://kubernetes.io/docs/concepts/workloads/controllers/statefulset/">StatefulSet</a>: A stateful set is a workload resource that is used to manage stateful applications. It is used for applications that require stable, unique network identifiers and stable storage.</li>
+<li><a href="https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/">DaemonSet</a>: A daemon set is a workload resource that ensures that a copy of a pod is running on all or some nodes in the cluster. It is used for applications that need to run on every node in the cluster, such as logging or monitoring agents.</li>
+<li><a href="https://kubernetes.io/docs/concepts/workloads/controllers/job/">Job</a>: A job is a workload resource that is used to run a batch job. It is used for applications that need to run to completion, such as data processing jobs.</li>
+<li><a href="https://kubernetes.io/docs/concepts/workloads/controllers/cron-jobs/">CronJob</a>: A cron job is a workload resource that is used to run a batch job on a schedule. It is used for applications that need to run on a schedule, such as backups or report generation.</li>
+</ul>
+<p>The resources that you request are reconciled by various <a href="https://kubernetes.io/docs/concepts/architecture/controller/">controllers</a> in the Kubernetes control plane. For example, when you create a Deployment, the Deployment controller will create a ReplicaSet and the ReplicaSet controller will create the Pods. When you submit a resource through the Kubernetes API, the desired state is stored in etcd and controllers are responsible for ensuring that the actual state matches the desired state. This is known as the reconciliation loop.</p>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p>Kubernetes also supports custom controllers through its <a href="https://kubernetes.io/docs/concepts/extend-kubernetes/#extension-patterns">extension patterns</a> which allow you to extend the functionality of Kubernetes.</p>
+</div>
+<h3 id="use-kubectl-to-generate-yaml">Use kubectl to generate YAML</h3>
+<p>In the KCNA section of this workshop, you used kubectl imperative commands to deploy applications. That is a good way to quickly get started but it isn't the best way to deploy applications in production. In production, you should be using declarative configuration files in the form of YAML manifests to deploy applications. This allows you to version control application deployments and makes it easier to manage changes over time.</p>
+<p>Getting started with YAML might seem daunting at first, but it can be made easy if you leverage a feature of kubectl and have it generate the YAML for you. </p>
+<p>Run the following command to create a namespace.</p>
+<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>create<span class="w"> </span>namespace<span class="w"> </span>n654
+</code></pre></div>
+<p>Let's deploy the application that you packaged up in the KCNA section of this workshop.</p>
+<p>Run the following command to create a deployment, but this time use the <code>--dry-run=client</code> and <code>-o yaml</code> flags to generate the YAML for you and redirect the output to a file called <strong>myapp2.yaml</strong>.</p>
+<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>create<span class="w"> </span>deployment<span class="w"> </span>myapp2<span class="w"> </span><span class="se">\</span>
+--namespace<span class="w"> </span>n654<span class="w"> </span><span class="se">\</span>
+--image<span class="o">=</span>&lt;PASTE_IN_YOUR_CONTAINER_IMAGE_NAME&gt;<span class="w"> </span><span class="se">\</span>
+--replicas<span class="o">=</span><span class="m">3</span><span class="w"> </span><span class="se">\</span>
+--port<span class="o">=</span><span class="m">3000</span><span class="w"> </span><span class="se">\</span>
+--dry-run<span class="o">=</span>client<span class="w"> </span><span class="se">\</span>
+-o<span class="w"> </span>yaml<span class="w"> </span>&gt;<span class="w"> </span>myapp2.yaml
+</code></pre></div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>This assumes you have a container image that you built in the KCNA section of this workshop.</p>
+</div>
+<p>View the <strong>myapp2.yaml</strong> file.</p>
+<div class="highlight"><pre><span></span><code>cat<span class="w"> </span>myapp2.yaml
+</code></pre></div>
+<p>In the output, you'll see that the entire Deployment manifest has been generated for you. If needed, you can edit the file to make any changes that you want and then apply it.</p>
+<p>Run the following command to apply the manifest.</p>
+<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>apply<span class="w"> </span>--namespace<span class="w"> </span>n654<span class="w"> </span>-f<span class="w"> </span>myapp2.yaml
+</code></pre></div>
+<p>The application should now be deployed. Run the following command to get the Pods.</p>
+<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>get<span class="w"> </span>pods<span class="w"> </span>--namespace<span class="w"> </span>n654
+</code></pre></div>
+<p>Why stop there? We can add the Service and Ingress resources to the same file too.</p>
+<p>In YAML manifests, you can have multiple resources in the same file as long as they are separated by three dashes. So let's add that then append the service YAML to the file.</p>
+<div class="highlight"><pre><span></span><code><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;---&quot;</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>myapp2.yaml
+</code></pre></div>
+<p>Then run the following command to generate the Service YAML and append it to the file.</p>
+<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>expose<span class="w"> </span>deployment<span class="w"> </span>myapp2<span class="w"> </span><span class="se">\</span>
+--namespace<span class="w"> </span>n654<span class="w"> </span><span class="se">\</span>
+--port<span class="o">=</span><span class="m">80</span><span class="w"> </span><span class="se">\</span>
+--target-port<span class="o">=</span><span class="m">3000</span><span class="w"> </span><span class="se">\</span>
+--dry-run<span class="o">=</span>client<span class="w"> </span><span class="se">\</span>
+-o<span class="w"> </span>yaml<span class="w"> </span>&gt;&gt;<span class="w"> </span>myapp2.yaml
+</code></pre></div>
+<p>Do the same for creating an Ingress for the application to expose it externally using a load balancer.</p>
+<div class="highlight"><pre><span></span><code><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;---&quot;</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>myapp2.yaml
+</code></pre></div>
+<p>Then run the following command to generate the ingress YAML and append it to the file.</p>
+<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>create<span class="w"> </span>ingress<span class="w"> </span>myapp2<span class="w"> </span><span class="se">\</span>
+--namespace<span class="w"> </span>n654<span class="w"> </span><span class="se">\</span>
+--class<span class="o">=</span>nginx<span class="w"> </span><span class="se">\</span>
+--rule<span class="o">=</span><span class="s2">&quot;myapp2.example.com/*=myapp2:80&quot;</span><span class="w"> </span><span class="se">\</span>
+--dry-run<span class="o">=</span>client<span class="w"> </span><span class="se">\</span>
+-o<span class="w"> </span>yaml<span class="w"> </span>&gt;&gt;<span class="w"> </span>myapp2.yaml
+</code></pre></div>
+<p>Now, view the <strong>myapp2.yaml</strong> file and notice how it has all three resources in it.</p>
+<div class="highlight"><pre><span></span><code>cat<span class="w"> </span>myapp2.yaml
+</code></pre></div>
+<p>Finally, apply the manifest.</p>
+<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>apply<span class="w"> </span>--namespace<span class="w"> </span>n654<span class="w"> </span>-f<span class="w"> </span>myapp2.yaml
+</code></pre></div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>You can use the <code>--dry-run=client</code> and <code>-o yaml</code> flags to generate the YAML for any resource type. Throughout the exam, you should leverage this technique as much as possible to save time. It is easier to use kubectl to generate most of the YAML for you than it is to write it from scratch.</p>
+</div>
+<p>If all went well, you should be able to access the application from your host machine using the following URL.</p>
+<div class="highlight"><pre><span></span><code>curl<span class="w"> </span>http://control<span class="w"> </span>-H<span class="w"> </span><span class="s2">&quot;Host: myapp2.example.com&quot;</span>
+</code></pre></div>
+<h3 id="use-kubectl-for-reference">Use kubectl for reference</h3>
+<p>kubectl is also a great tool for reference. You can use it to get information about resources in the cluster. </p>
+<p>To see all the available resources in the cluster, run the following command.</p>
+<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>api-resources
+</code></pre></div>
+<p>The output will show you all the resources that are available in the cluster. You will see the short name, full name, and the namespaced status of each resource. The short name in particular is useful for quickly referencing resources in kubectl commands. Remember, time is of the essence so you save a few seconds by using the short name. For example, you can use <code>po</code> instead of <code>pods</code>. Combine this with command aliases and you can save even more time.</p>
+<p>You can run something like this to get information about an Ingress resource.</p>
+<div class="highlight"><pre><span></span><code>k<span class="w"> </span>get<span class="w"> </span>ing<span class="w"> </span>-n<span class="w"> </span>n654
+</code></pre></div>
+<p>You can also use the <code>explain</code> command to get detailed information about a resource spec. For example, if you want to know more about the Ingress resource, you can run the following command.</p>
+<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>explain<span class="w"> </span>ingress
+</code></pre></div>
+<p>To dig deeper into the spec, you can run the following command.</p>
+<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>explain<span class="w"> </span>ingress.spec
+</code></pre></div>
+<p>You can also use the <code>--recursive</code> flag to get information about nested fields, but it won't give you the full details of each field.</p>
+<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>explain<span class="w"> </span>ingress.spec<span class="w"> </span>--recursive
+</code></pre></div>
+<p>The <code>--help</code> flag is also incredibly useful. You can use it to get information about the flags that are available for a command. It will even give you examples of how to use the command.</p>
+<p>Run this command and see what you get.</p>
+<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>create<span class="w"> </span>configmap<span class="w"> </span>--help
+</code></pre></div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>kubectl is your friend. Use it to get information you need to get a task done. It is faster than looking up the documentation.</p>
+</div>
+<h2 id="configuring-applications">Configuring Applications</h2>
+<p>All applications need to be configured in some way. In Kubernetes, there are two main ways to configure applications: using <a href="https://kubernetes.io/docs/concepts/configuration/configmap/">ConfigMaps</a> and <a href="https://kubernetes.io/docs/concepts/configuration/secret/">Secrets</a>.</p>
+<p>ConfigMaps are used to store non-sensitive configuration data in key-value pairs. They can be used to store configuration files, command-line arguments, environment variables, and more. ConfigMaps can be mounted as volumes or exposed as environment variables in pods.</p>
+<p>Secrets are used to store sensitive information, such as passwords, OAuth tokens, and SSH keys. Secrets stored in etcd and are base64 encoded --not encrypted; which is a key consideration when using them. Anyone with access to the etcd database can read the secrets. Therefore, it is important to use<a href="https://kubernetes.io/docs/tasks/administer-cluster/encrypt-data/"> encryption at rest for etcd data</a>.</p>
+<p>Applications may also need to be configured to use persistent storage. In Kubernetes, persistent storage is managed using <a href="https://kubernetes.io/docs/concepts/storage/persistent-volumes/">Persistent Volumes (PV)</a> and <a href="https://kubernetes.io/docs/concepts/storage/persistent-volumes/#persistentvolumeclaims">Persistent Volume Claims (PVC)</a>. A PV is a piece of storage in the cluster that has been provisioned by an administrator or dynamically provisioned using Storage Classes. A PVC is a request for storage by a user.</p>
+<h3 id="using-pvs-and-pvcs">Using PVs and PVCs</h3>
+<p>PVs and PVCs are used to manage persistent storage usage in Kubernetes. To use persistent storage, you need to create a PV to represent a chunk of storage and a PVC to request the storage --an allocation. There are several different types of PVs, including hostPath, NFS, iSCSI, and cloud provider-specific PVs. </p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Since we are working with a local Kubernetes cluster and all we have are local disks, we will use the hostPath type of PV. The hostPath type of PV uses a file or directory on the host to store the data. This is useful for testing and development purposes but isn't recommended for production use.</p>
+</div>
+<p>Run the following command to create a PV on the host's /tmp directory. We don't have much storage space to work with so we'll only carve out 20Mi of storage.</p>
+<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>apply<span class="w"> </span>-f<span class="w"> </span>-<span class="w"> </span><span class="s">&lt;&lt;EOF</span>
+<span class="s">apiVersion: v1</span>
+<span class="s">kind: PersistentVolume</span>
+<span class="s">metadata:</span>
+<span class="s"> name: my-pv</span>
+<span class="s">spec:</span>
+<span class="s"> capacity:</span>
+<span class="s">  storage: 20Mi</span>
+<span class="s"> accessModes:</span>
+<span class="s">   - ReadWriteOnce</span>
+<span class="s"> hostPath:</span>
+<span class="s">  path: &quot;/tmp&quot;</span>
+<span class="s">EOF</span>
+</code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The PV is a cluster resource that represents a piece of storage in the cluster so a namespace isn't needed.</p>
+</div>
+<p>Run the following command to view the PV. You should see that the PV is available. This is because the PV hasn't been claimed by a PVC yet.</p>
+<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>get<span class="w"> </span>pv<span class="w"> </span>-n<span class="w"> </span>n239
+</code></pre></div>
+<p>Now create a PVC that requests the 20Mi of storage.</p>
+<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>create<span class="w"> </span>ns<span class="w"> </span>n239
+kubectl<span class="w"> </span>apply<span class="w"> </span>-n<span class="w"> </span>n239<span class="w"> </span>-f<span class="w"> </span>-<span class="w"> </span><span class="s">&lt;&lt;EOF</span>
+<span class="s">apiVersion: v1</span>
+<span class="s">kind: PersistentVolumeClaim</span>
+<span class="s">metadata:</span>
+<span class="s">  name: my-pvc</span>
+<span class="s">spec:</span>
+<span class="s">  accessModes:</span>
+<span class="s">    - ReadWriteOnce</span>
+<span class="s">  resources:</span>
+<span class="s">    requests:</span>
+<span class="s">      storage: 20Mi</span>
+<span class="s">EOF</span>
+</code></pre></div>
+<p>If you run the command to view the PV again, you'll see that the PV is bound to the PVC.</p>
+<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>get<span class="w"> </span>pv<span class="w"> </span>-n<span class="w"> </span>n239
+</code></pre></div>
+<p>Additionally, if following command to view the PVC, you'll see that the PVC is linked to the PV.</p>
+<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>get<span class="w"> </span>pvc<span class="w"> </span>-n<span class="w"> </span>n239
+</code></pre></div>
+<p>PVCs are then used in workload resources and mounted as volumes in the Pod spec. Run the following command to create a Pod that uses the PVC.</p>
+<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>apply<span class="w"> </span>-n<span class="w"> </span>n239<span class="w"> </span>-f<span class="w"> </span>-<span class="w"> </span><span class="s">&lt;&lt;EOF</span>
+<span class="s">apiVersion: v1</span>
+<span class="s">kind: Pod</span>
+<span class="s">metadata:</span>
+<span class="s">  name: my-pod</span>
+<span class="s">spec:</span>
+<span class="s">  containers:</span>
+<span class="s">  - name: my-pod</span>
+<span class="s">    image: busybox</span>
+<span class="s">    command: [&quot;sleep&quot;, &quot;3600&quot;]</span>
+<span class="s">    volumeMounts:                # Define the volume mounts for the container</span>
+<span class="s">      - name: data               # Name of the volume</span>
+<span class="s">        mountPath: /data         # Path to mount the volume in the container</span>
+<span class="s">  volumes:                       # Define the volumes for the Pod</span>
+<span class="s">    - name: data                 # Name of the volume</span>
+<span class="s">      persistentVolumeClaim:     # Source type of the volume</span>
+<span class="s">        claimName: my-pvc        # Name of the PVC</span>
+<span class="s">EOF</span>
+</code></pre></div>
+<p>If you run the following command, you should be able to view the contents of the mounted volume in the Pod.</p>
+<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>-it<span class="w"> </span>my-pod<span class="w"> </span>-n<span class="w"> </span>n239<span class="w"> </span>--<span class="w"> </span>ls<span class="w"> </span>/data
+</code></pre></div>
+<p>Since we used the host's /tmp directory for the PV, the Pod now has access to the host's /tmp directory and all the files within it.</p>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p>This is a security risk and should be avoided in production. Another concern of using hostPath is that the data is limited to the host that the Pod was scheduled on. If the Pod is rescheduled to another host, the data will not be available.</p>
+</div>
+<h3 id="using-configmaps">Using ConfigMaps</h3>
+<p>There are a few ways to use ConfigMaps in Kubernetes. The most common way is to use them as environment variables in a pod. This allows you to pass configuration data to your application without hardcoding it into the application itself.</p>
+<p>In this example, you'll create a ConfigMap and use it to configure an application.</p>
+<p>Run the following command to create a temporary file to store plugin configuration for RabbitMQ.</p>
+<div class="highlight"><pre><span></span><code>cat<span class="w"> </span><span class="s">&lt;&lt; EOF | tee /tmp/rabbitmq_enabled_plugins</span>
+<span class="s">[rabbitmq_management,rabbitmq_prometheus,rabbitmq_amqp1_0].</span>
+<span class="s">EOF</span>
+</code></pre></div>
+<p>Create a namespace and a ConfigMap from the RabbitMQ plugins file.</p>
+<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>create<span class="w"> </span>ns<span class="w"> </span>n754
+kubectl<span class="w"> </span>create<span class="w"> </span>configmap<span class="w"> </span>rabbitmq-enabled-plugins<span class="w"> </span>-n<span class="w"> </span>n754<span class="w"> </span>--from-file<span class="o">=</span>/tmp/rabbitmq_enabled_plugins
+</code></pre></div>
+<p>Next, run the following command to use the ConfigMap as a file mounted in the RabbitMQ Pod to enable the plugins.</p>
+<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>apply<span class="w"> </span>-n<span class="w"> </span>n754<span class="w"> </span>-f<span class="w"> </span>-<span class="w"> </span><span class="s">&lt;&lt;EOF</span>
+<span class="s">apiVersion: apps/v1</span>
+<span class="s">kind: StatefulSet</span>
+<span class="s">metadata:</span>
+<span class="s">  name: rabbitmq</span>
+<span class="s">spec:</span>
+<span class="s">  serviceName: rabbitmq</span>
+<span class="s">  replicas: 1</span>
+<span class="s">  selector:</span>
+<span class="s">    matchLabels:</span>
+<span class="s">      app: rabbitmq</span>
+<span class="s">  template:</span>
+<span class="s">    metadata:</span>
+<span class="s">      labels:</span>
+<span class="s">        app: rabbitmq</span>
+<span class="s">    spec:</span>
+<span class="s">      nodeSelector:</span>
+<span class="s">        &quot;kubernetes.io/os&quot;: linux</span>
+<span class="s">      containers:</span>
+<span class="s">      - name: rabbitmq</span>
+<span class="s">        image: rabbitmq:3.10-management-alpine</span>
+<span class="s">        ports:</span>
+<span class="s">        - containerPort: 5672</span>
+<span class="s">          name: rabbitmq-amqp</span>
+<span class="s">        - containerPort: 15672</span>
+<span class="s">          name: rabbitmq-http</span>
+<span class="s">        env:</span>
+<span class="s">        - name: RABBITMQ_DEFAULT_USER</span>
+<span class="s">          value: &quot;username&quot;</span>
+<span class="s">        - name: RABBITMQ_DEFAULT_PASS</span>
+<span class="s">          value: &quot;password&quot;</span>
+<span class="s">        resources:</span>
+<span class="s">          requests:</span>
+<span class="s">            cpu: 10m</span>
+<span class="s">            memory: 128Mi</span>
+<span class="s">          limits:</span>
+<span class="s">            cpu: 250m</span>
+<span class="s">            memory: 256Mi</span>
+<span class="s">        volumeMounts:                                 # Define the volume mounts for the container</span>
+<span class="s">        - name: rabbitmq-enabled-plugins              # Name of the volume</span>
+<span class="s">          mountPath: /etc/rabbitmq/enabled_plugins    # Path to mount the volume in the container</span>
+<span class="s">          subPath: enabled_plugins                    # Mount as a file in the container</span>
+<span class="s">      volumes:                                        # Define the volume for the Pod</span>
+<span class="s">      - name: rabbitmq-enabled-plugins                # Name of the volume</span>
+<span class="s">        configMap:                                    # Source type of the volume</span>
+<span class="s">          name: rabbitmq-enabled-plugins              # Name of the ConfigMap</span>
+<span class="s">          items:                                      # Specify the items to mount</span>
+<span class="s">          - key: rabbitmq_enabled_plugins             # Name of the key in the ConfigMap</span>
+<span class="s">            path: enabled_plugins                     # Name of the file in the Pod</span>
+<span class="s">EOF</span>
+</code></pre></div>
+<p>Based on the comments in the YAML, you can see that we're mounting the ConfigMap as a file in the container. The <code>subPath</code> field is used to specify the name of the file in the container. This allows us to mount a single key from the ConfigMap as a file in the container.</p>
+<p>If you run the following command, you should be able to view the contents of the plugins file in the RabbitMQ Pod.</p>
+<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>-it<span class="w"> </span>rabbitmq-0<span class="w"> </span>-n<span class="w"> </span>n754<span class="w"> </span>--<span class="w"> </span>cat<span class="w"> </span>/etc/rabbitmq/enabled_plugins<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>rabbitmq_amqp1_0
+</code></pre></div>
+<p>The other ways to use ConfigMaps is to mount them as environment variables, so be sure to check out ths <a href="https://kubernetes.io/docs/tasks/configure-pod-container/configure-pod-configmap/">guide</a> on how to do that.</p>
+<p><strong>Reference:</strong> <a href="https://kubernetes.io/docs/tutorials/configuration/updating-configuration-via-a-configmap/">https://kubernetes.io/docs/tutorials/configuration/updating-configuration-via-a-configmap/</a></p>
+<h3 id="using-secrets">Using Secrets</h3>
+<p>Secrets are used to store "sensitive" information. I put that in quotes because secrets aren't really secret. They are base64 encoded and anyone with access to the etcd database can read them. In terms of usage, they are similar to ConfigMaps. You can use them as environment variables or mount them as volumes.</p>
+<p>If you noticed in the previous example, the username and password for RabbitMQ were hardcoded in the YAML. This isn't a good practice. Instead, you should use a Secret to store the username and password.</p>
+<p>Run the following command to create a temporary file to store the RabbitMQ username and password.</p>
+<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>create<span class="w"> </span>secret<span class="w"> </span>generic<span class="w"> </span>rabbitmq-secret<span class="w"> </span>-n<span class="w"> </span>n754<span class="w"> </span>--from-literal<span class="o">=</span><span class="nv">RABBITMQ_DEFAULT_USER</span><span class="o">=</span>username<span class="w"> </span>--from-literal<span class="o">=</span><span class="nv">RABBITMQ_DEFAULT_PASSWORD</span><span class="o">=</span>password
+</code></pre></div>
+<p>Run the following command to use the Secret as an environment variable in the RabbitMQ Pod to set the admin user and password, and expose the RabbitMQ management interface on port 15672.</p>
+<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>apply<span class="w"> </span>-n<span class="w"> </span>n754<span class="w"> </span>-f<span class="w"> </span>-<span class="w"> </span><span class="s">&lt;&lt;EOF</span>
+<span class="s">apiVersion: apps/v1</span>
+<span class="s">kind: StatefulSet</span>
+<span class="s">metadata:</span>
+<span class="s">  name: rabbitmq</span>
+<span class="s">spec:</span>
+<span class="s">  serviceName: rabbitmq</span>
+<span class="s">  replicas: 1</span>
+<span class="s">  selector:</span>
+<span class="s">    matchLabels:</span>
+<span class="s">      app: rabbitmq</span>
+<span class="s">  template:</span>
+<span class="s">    metadata:</span>
+<span class="s">      labels:</span>
+<span class="s">        app: rabbitmq</span>
+<span class="s">    spec:</span>
+<span class="s">      nodeSelector:</span>
+<span class="s">        &quot;kubernetes.io/os&quot;: linux</span>
+<span class="s">      containers:</span>
+<span class="s">      - name: rabbitmq</span>
+<span class="s">        image: rabbitmq:3.10-management-alpine</span>
+<span class="s">        ports:</span>
+<span class="s">        - containerPort: 5672</span>
+<span class="s">          name: rabbitmq-amqp</span>
+<span class="s">        - containerPort: 15672</span>
+<span class="s">          name: rabbitmq-http</span>
+<span class="s">        envFrom:                       # Use envFrom to load all keys from the secret as environment variables</span>
+<span class="s">        - secretRef:                   # Reference the secret</span>
+<span class="s">            name: rabbitmq-secret      # Name of the secret</span>
+<span class="s">        resources:</span>
+<span class="s">          requests:</span>
+<span class="s">            cpu: 10m</span>
+<span class="s">            memory: 128Mi</span>
+<span class="s">          limits:</span>
+<span class="s">            cpu: 250m</span>
+<span class="s">            memory: 256Mi</span>
+<span class="s">EOF</span>
+</code></pre></div>
+<p>If you run the following command, you'll see that the username and password are now being set as environment variables in the RabbitMQ Pod.</p>
+<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>describe<span class="w"> </span>pod<span class="w"> </span>rabbitmq-0<span class="w"> </span>-n<span class="w"> </span>n754<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span><span class="s2">&quot;Environment Variables from&quot;</span><span class="w"> </span>-A<span class="w"> </span><span class="m">1</span>
+</code></pre></div>
+<h2 id="exposing-applications">Exposing Applications</h2>
+<p>Understanding the different types of services is also important. There are four types of services in Kubernetes: <a href="https://kubernetes.io/docs/concepts/services-networking/service/#type-clusterip">ClusterIP</a>, <a href="https://kubernetes.io/docs/concepts/services-networking/service/#type-nodeport">NodePort</a>, <a href="https://kubernetes.io/docs/concepts/services-networking/service/#loadbalancer">LoadBalancer</a>, and <a href="https://kubernetes.io/docs/concepts/services-networking/service/#externalname">ExternalName</a>. </p>
+<p>The most common type of service is ClusterIP, which exposes the service on a cluster-internal IP. This means that the service is only accessible from within the cluster. NodePort exposes the service on each node's IP at a static port. This means that the service is accessible from outside the cluster by requesting the node IP on the node port. LoadBalancer exposes the service externally using a cloud provider's load balancer, which ultimately gives you a public or private IP address. ExternalName maps the service to the contents of the externalName field (e.g., foo.bar.example.com), by returning a CNAME record with its value.</p>
+<p>It is also important to remember that services uses the selector to find the pods that it should route traffic to. This is done using labels. Labels are key-value pairs that are attached to resources in Kubernetes.</p>
+<h3 id="using-services">Using Services</h3>
+<p>Run the following command to expose the RabbitMQ deployment that you just created.</p>
+<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>apply<span class="w"> </span>-n<span class="w"> </span>n754<span class="w"> </span>-f<span class="w"> </span>-<span class="w"> </span><span class="s">&lt;&lt;EOF</span>
+<span class="s">apiVersion: v1</span>
+<span class="s">kind: Service</span>
+<span class="s">metadata:</span>
+<span class="s">  name: rabbitmq</span>
+<span class="s">  labels:</span>
+<span class="s">    app: rabbitmq</span>
+<span class="s">spec:</span>
+<span class="s">  ports:</span>
+<span class="s">    - name: rabbitmq-amqp</span>
+<span class="s">      port: 5672</span>
+<span class="s">      targetPort: 5672</span>
+<span class="s">    - name: rabbitmq-http</span>
+<span class="s">      port: 15672</span>
+<span class="s">      targetPort: 15672</span>
+<span class="s">  selector:</span>
+<span class="s">    app: rabbitmq      # The selector is used to find the pods that the service should route traffic to</span>
+<span class="s">EOF</span>
+</code></pre></div>
+<p>With the service created, you can access the nginx application using the service name. Run the following command to get the service IP.</p>
+<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>run<span class="w"> </span>mycurl<span class="w"> </span>-n<span class="w"> </span>n754<span class="w"> </span>--image<span class="o">=</span>curlimages/curl<span class="w"> </span>-it<span class="w"> </span>--rm<span class="w"> </span>--restart<span class="o">=</span>Never<span class="w"> </span>--<span class="w"> </span>curl<span class="w"> </span>rabbitmq:15672
+</code></pre></div>
+<h3 id="using-ingress">Using Ingress</h3>
+<p>The default service type is ClusterIP, which means that the service is only accessible from within the cluster. We demonstrated this with the curl command above with the curl pod running in the same cluster, you were able to access the RabbitMQ service using the service name. But services especially HTTP-based services are often meant to be accessed from outside the cluster. To do this, you can use an Ingress resource.</p>
+<p>Think of an Ingress as a reverse proxy that routes traffic to the appropriate service based on the request URL. It is most commonly used to route HTTP and HTTPS traffic, but it can also be used to route TCP and UDP traffic.</p>
+<p>Run the following command to create an Ingress resource for the RabbitMQ service.</p>
+<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>apply<span class="w"> </span>-n<span class="w"> </span>n754<span class="w"> </span>-f<span class="w"> </span>-<span class="w"> </span><span class="s">&lt;&lt;EOF</span>
+<span class="s">apiVersion: networking.k8s.io/v1</span>
+<span class="s">kind: Ingress</span>
+<span class="s">metadata:</span>
+<span class="s">  name: rabbitmq</span>
+<span class="s">  annotations:</span>
+<span class="s">    nginx.ingress.kubernetes.io/rewrite-target: /      # Rewrite the URL to remove the path prefix</span>
+<span class="s">spec:</span>
+<span class="s">  ingressClassName: nginx</span>
+<span class="s">  rules:</span>
+<span class="s">  - host: rabbitmq.example.com</span>
+<span class="s">    http:</span>
+<span class="s">      paths:</span>
+<span class="s">      - backend:</span>
+<span class="s">          service:</span>
+<span class="s">            name: rabbitmq</span>
+<span class="s">            port:</span>
+<span class="s">              number: 15672</span>
+<span class="s">        path: /manage                                  # Request path to the RabbitMQ management interface</span>
+<span class="s">        pathType: Prefix</span>
+<span class="s">      - backend:</span>
+<span class="s">          service:</span>
+<span class="s">            name: rabbitmq</span>
+<span class="s">            port:</span>
+<span class="s">              number: 5672</span>
+<span class="s">        path: /amqp                                    # Request path to the RabbitMQ AMQP interface</span>
+<span class="s">        pathType: Prefix</span>
+<span class="s">EOF</span>
+</code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Notice that the Ingress resource is using path-based routing to route traffic to the appropriate service based on the request URL. The path /manage is used to route traffic to the RabbitMQ management interface, while the path /amqp is used to route traffic to the RabbitMQ AMQP interface. But these paths mean nothing to the actual RabbitMQ service so you're using the <code>nginx.ingress.kubernetes.io/rewrite-target</code> annotation to rewrite the URL to remove the path prefix before it is sent to the RabbitMQ service.</p>
+</div>
+<p>Now you can access the RabbitMQ management interface from your host machine. Run the following command to access the RabbitMQ management interface.</p>
+<div class="highlight"><pre><span></span><code>curl<span class="w"> </span>http://control/manage<span class="w"> </span>-H<span class="w"> </span><span class="s2">&quot;Host: rabbitmq.example.com&quot;</span>
+</code></pre></div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Make sure you run the command from your host machine and not from the control node.</p>
+</div>
+<h2 id="securing-network-traffic">Securing network traffic</h2>
+<p>Network policies are extremely important to understand for all of the hands-on exams. In the previous section, we were introduced to NetworkPolicy but it is worth revisiting it here as it is a major part of all the Kubernetes exams and tends to be a stumbling block for many test takers.</p>
+<p>In Kubernetes, there are two important behaviors to understand regarding network policies:</p>
+<ol>
+<li>By default, with no NetworkPolicies applied, all pods can communicate with all other pods</li>
+<li>Once you apply any NetworkPolicy with a podSelector to a namespace, the selected pods become isolated and only accept traffic explicitly allowed by NetworkPolicies.</li>
+</ol>
+<h3 id="deny-all-ingress-traffic">Deny all ingress traffic</h3>
+<p>Run the following command to create a namespace and a deployment.</p>
+<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>apply<span class="w"> </span>-n<span class="w"> </span>pets<span class="w"> </span>-f<span class="w"> </span>-<span class="w"> </span><span class="s">&lt;&lt;EOF</span>
+<span class="s">apiVersion: networking.k8s.io/v1</span>
+<span class="s">kind: NetworkPolicy</span>
+<span class="s">metadata:</span>
+<span class="s">  name: deny-all</span>
+<span class="s">spec:</span>
+<span class="s">  podSelector: {}</span>
+<span class="s">  policyTypes:</span>
+<span class="s">  - Ingress</span>
+<span class="s">EOF</span>
+</code></pre></div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>This assumes you deployed the AKS Store Demo microservices app in the <a href="https://pauldotyu.github.io/kubestronaut/kcna/#microservices">previous section</a> section of this workshop. If you've not already, please go back and deploy it before you proceed.</p>
+</div>
+<p>The deny-all policy you created earlier (with <code>podSelector: {}</code>) selects all pods in the namespace and defines no ingress rules, effectively blocking all incoming traffic to every pod.</p>
+<p>Let's test the network policies to confirm all ingress traffic is blocked.</p>
+<p>Run the following command to get the pod name of the store-front application.</p>
+<div class="highlight"><pre><span></span><code><span class="nv">POD_NAME</span><span class="o">=</span><span class="k">$(</span>kubectl<span class="w"> </span>get<span class="w"> </span>pod<span class="w"> </span>--namespace<span class="w"> </span>pets<span class="w"> </span>-l<span class="w"> </span><span class="nv">app</span><span class="o">=</span>store-front<span class="w"> </span>-o<span class="w"> </span><span class="nv">jsonpath</span><span class="o">=</span><span class="s1">&#39;{.items[0].metadata.name}&#39;</span><span class="k">)</span>
+</code></pre></div>
+<p>Connection from store-front to product-service should timeout.</p>
+<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>-it<span class="w"> </span><span class="nv">$POD_NAME</span><span class="w"> </span>--namespace<span class="w"> </span>pets<span class="w"> </span>--<span class="w"> </span>wget<span class="w"> </span>-qO-<span class="w"> </span>http://product-service:3002/health<span class="w"> </span>--timeout<span class="o">=</span><span class="m">1</span>
+</code></pre></div>
+<p>Connection from store-front to order-service should also timeout.</p>
+<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>-it<span class="w"> </span><span class="nv">$POD_NAME</span><span class="w"> </span>--namespace<span class="w"> </span>pets<span class="w"> </span>--<span class="w"> </span>wget<span class="w"> </span>-qO-<span class="w"> </span>http://order-service:3000/health<span class="w"> </span>--timeout<span class="o">=</span><span class="m">1</span>
+</code></pre></div>
+<p>Finally, get the pod name of the order-service and confirm the connection from order-service to RabbitMQ also times out.</p>
+<div class="highlight"><pre><span></span><code><span class="nv">POD_NAME</span><span class="o">=</span><span class="k">$(</span>kubectl<span class="w"> </span>get<span class="w"> </span>pod<span class="w"> </span>--namespace<span class="w"> </span>pets<span class="w"> </span>-l<span class="w"> </span><span class="nv">app</span><span class="o">=</span>order-service<span class="w"> </span>-o<span class="w"> </span><span class="nv">jsonpath</span><span class="o">=</span><span class="s1">&#39;{.items[0].metadata.name}&#39;</span><span class="k">)</span>
+kubectl<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>-it<span class="w"> </span><span class="nv">$POD_NAME</span><span class="w"> </span>--namespace<span class="w"> </span>pets<span class="w"> </span>--<span class="w"> </span>wget<span class="w"> </span>-qO-<span class="w"> </span>http://rabbitmq:15672/<span class="w"> </span>--timeout<span class="o">=</span><span class="m">1</span>
+</code></pre></div>
+<h3 id="configure-specific-traffic-patterns">Configure specific traffic patterns</h3>
+<p>All traffic is blocked at the moment. Let's open up ingress traffic to the product-service from the store-front application. This is a common use case for network policies. You want to restrict access to a service to only allow traffic from specific applications.</p>
+<p>Run the following command to allow ingress on the product-service only from the store-front application.</p>
+<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>apply<span class="w"> </span>-n<span class="w"> </span>pets<span class="w"> </span>-f<span class="w"> </span>-<span class="w"> </span><span class="s">&lt;&lt;EOF</span>
+<span class="s">apiVersion: networking.k8s.io/v1</span>
+<span class="s">kind: NetworkPolicy</span>
+<span class="s">metadata:</span>
+<span class="s">  name: allow-storefront-to-product-service</span>
+<span class="s">spec:</span>
+<span class="s">  podSelector:</span>
+<span class="s">    matchLabels:</span>
+<span class="s">      app: product-service</span>
+<span class="s">  ingress:</span>
+<span class="s">  - from:</span>
+<span class="s">    - podSelector:</span>
+<span class="s">        matchLabels:</span>
+<span class="s">          app: store-front</span>
+<span class="s">  policyTypes:</span>
+<span class="s">  - Ingress</span>
+<span class="s">EOF</span>
+</code></pre></div>
+<p>Similarly, the order-service should also only be accessible from the store-front application. So let's create a network policy for that as well.</p>
+<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>apply<span class="w"> </span>-n<span class="w"> </span>pets<span class="w"> </span>-f<span class="w"> </span>-<span class="w"> </span><span class="s">&lt;&lt;EOF</span>
+<span class="s">apiVersion: networking.k8s.io/v1</span>
+<span class="s">kind: NetworkPolicy</span>
+<span class="s">metadata:</span>
+<span class="s">  name: allow-storefront-to-order-service</span>
+<span class="s">spec:</span>
+<span class="s">  podSelector:</span>
+<span class="s">    matchLabels:</span>
+<span class="s">      app: order-service</span>
+<span class="s">  ingress:</span>
+<span class="s">  - from:</span>
+<span class="s">    - podSelector:</span>
+<span class="s">        matchLabels:</span>
+<span class="s">          app: store-front</span>
+<span class="s">  policyTypes:</span>
+<span class="s">  - Ingress</span>
+<span class="s">EOF</span>
+</code></pre></div>
+<p>Finally, the RabbitMQ service should only be accessible from the order-service application. So let's create a network policy for that as well.</p>
+<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>apply<span class="w"> </span>-n<span class="w"> </span>pets<span class="w"> </span>-f<span class="w"> </span>-<span class="w"> </span><span class="s">&lt;&lt;EOF</span>
+<span class="s">apiVersion: networking.k8s.io/v1</span>
+<span class="s">kind: NetworkPolicy</span>
+<span class="s">metadata:</span>
+<span class="s">  name: allow-order-service-to-rabbitmq</span>
+<span class="s">spec:</span>
+<span class="s">  podSelector:</span>
+<span class="s">    matchLabels:</span>
+<span class="s">      app: rabbitmq</span>
+<span class="s">  ingress:</span>
+<span class="s">  - from:</span>
+<span class="s">    - podSelector:</span>
+<span class="s">        matchLabels:</span>
+<span class="s">          app: order-service</span>
+<span class="s">  policyTypes:</span>
+<span class="s">  - Ingress</span>
+<span class="s">EOF</span>
+</code></pre></div>
+<p>Run the following command to get the pod name of the store-front application.</p>
+<div class="highlight"><pre><span></span><code><span class="nv">POD_NAME</span><span class="o">=</span><span class="k">$(</span>kubectl<span class="w"> </span>get<span class="w"> </span>pod<span class="w"> </span>--namespace<span class="w"> </span>pets<span class="w"> </span>-l<span class="w"> </span><span class="nv">app</span><span class="o">=</span>store-front<span class="w"> </span>-o<span class="w"> </span><span class="nv">jsonpath</span><span class="o">=</span><span class="s1">&#39;{.items[0].metadata.name}&#39;</span><span class="k">)</span>
+</code></pre></div>
+<p>Connection from store-front to product-service should now be successful.</p>
+<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>-it<span class="w"> </span><span class="nv">$POD_NAME</span><span class="w"> </span>--namespace<span class="w"> </span>pets<span class="w"> </span>--<span class="w"> </span>wget<span class="w"> </span>-qO-<span class="w"> </span>http://product-service:3002/health<span class="w"> </span>--timeout<span class="o">=</span><span class="m">1</span>
+</code></pre></div>
+<p>Connection from store-front to order-service should now be successful as well.</p>
+<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>-it<span class="w"> </span><span class="nv">$POD_NAME</span><span class="w"> </span>--namespace<span class="w"> </span>pets<span class="w"> </span>--<span class="w"> </span>wget<span class="w"> </span>-qO-<span class="w"> </span>http://order-service:3000/health<span class="w"> </span>--timeout<span class="o">=</span><span class="m">1</span>
+</code></pre></div>
+<p>Finally, get the pod name of the order-service and confirm the connection from order-service to RabbitMQ should now be successful.</p>
+<div class="highlight"><pre><span></span><code><span class="nv">POD_NAME</span><span class="o">=</span><span class="k">$(</span>kubectl<span class="w"> </span>get<span class="w"> </span>pod<span class="w"> </span>--namespace<span class="w"> </span>pets<span class="w"> </span>-l<span class="w"> </span><span class="nv">app</span><span class="o">=</span>order-service<span class="w"> </span>-o<span class="w"> </span><span class="nv">jsonpath</span><span class="o">=</span><span class="s1">&#39;{.items[0].metadata.name}&#39;</span><span class="k">)</span>
+kubectl<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>-it<span class="w"> </span><span class="nv">$POD_NAME</span><span class="w"> </span>--namespace<span class="w"> </span>pets<span class="w"> </span>--<span class="w"> </span>wget<span class="w"> </span>-qO-<span class="w"> </span>http://rabbitmq:15672/<span class="w"> </span>--timeout<span class="o">=</span><span class="m">1</span>
+</code></pre></div>
+<p>Network policies are a powerful tool for securing your Kubernetes cluster. It is important to understand how they work and how to use them effectively. It is also important to efficiently test your network policies to ensure that they are working as expected during the exam.</p>
+<p>For more NetworkPolicy practice, check out the <a href="https://editor.networkpolicy.io/">NetworkPolicy Editor by Isovalent</a> for an interactive experience.</p>
+<h2 id="additional-resources">Additional Resources</h2>
+<p>There is a lot more to cover for the CKAD exam. Here are some additional resources to help you prepare:</p>
+<ul>
+<li><a href="https://github.com/cncf/curriculum/blob/master/CKAD_Curriculum_v1.32.pdf">CKAD Exam Curriculum</a></li>
+<li><a href="https://kodekloud.com/learning-path/ckad">CKAD Certification Learning Path</a></li>
+<li><a href="https://www.reddit.com/r/kubernetes/comments/r4q1ec/ckad_free_materials/">CKAD - free materials</a></li>
+</ul>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  <form class="md-feedback" name="feedback" hidden>
+    <fieldset>
+      <legend class="md-feedback__title">
+        Was this page helpful?
+      </legend>
+      <div class="md-feedback__inner">
+        <div class="md-feedback__list">
+          
+            <button class="md-feedback__icon md-icon" type="submit" title="This page was helpful" data-md-value="1">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 12a8 8 0 0 0-8-8 8 8 0 0 0-8 8 8 8 0 0 0 8 8 8 8 0 0 0 8-8m2 0a10 10 0 0 1-10 10A10 10 0 0 1 2 12 10 10 0 0 1 12 2a10 10 0 0 1 10 10M10 9.5c0 .8-.7 1.5-1.5 1.5S7 10.3 7 9.5 7.7 8 8.5 8s1.5.7 1.5 1.5m7 0c0 .8-.7 1.5-1.5 1.5S14 10.3 14 9.5 14.7 8 15.5 8s1.5.7 1.5 1.5m-5 7.73c-1.75 0-3.29-.73-4.19-1.81L9.23 14c.45.72 1.52 1.23 2.77 1.23s2.32-.51 2.77-1.23l1.42 1.42c-.9 1.08-2.44 1.81-4.19 1.81"/></svg>
+            </button>
+          
+            <button class="md-feedback__icon md-icon" type="submit" title="This page could be improved" data-md-value="0">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 12a8 8 0 0 0-8-8 8 8 0 0 0-8 8 8 8 0 0 0 8 8 8 8 0 0 0 8-8m2 0a10 10 0 0 1-10 10A10 10 0 0 1 2 12 10 10 0 0 1 12 2a10 10 0 0 1 10 10m-6.5-4c.8 0 1.5.7 1.5 1.5s-.7 1.5-1.5 1.5-1.5-.7-1.5-1.5.7-1.5 1.5-1.5M10 9.5c0 .8-.7 1.5-1.5 1.5S7 10.3 7 9.5 7.7 8 8.5 8s1.5.7 1.5 1.5m2 4.5c1.75 0 3.29.72 4.19 1.81l-1.42 1.42C14.32 16.5 13.25 16 12 16s-2.32.5-2.77 1.23l-1.42-1.42C8.71 14.72 10.25 14 12 14"/></svg>
+            </button>
+          
+        </div>
+        <div class="md-feedback__note">
+          
+            <div data-md-value="1" hidden>
+              
+              
+                
+              
+              Thanks for your feedback!
+            </div>
+          
+            <div data-md-value="0" hidden>
+              
+              
+                
+              
+              Thanks for your feedback! Help us improve this page by using our <a href="..." target="_blank" rel="noopener">feedback form</a>.
+            </div>
+          
+        </div>
+      </div>
+    </fieldset>
+  </form>
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../kcsa/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Kubernetes and Cloud Native Security Associate (KCSA)">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                Kubernetes and Cloud Native Security Associate (KCSA)
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../cka/" class="md-footer__link md-footer__link--next" aria-label="Next: Certified Kubernetes Administrator (CKA)">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                Certified Kubernetes Administrator (CKA)
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+      <div class="md-consent" data-md-component="consent" id="__consent" hidden>
+        <div class="md-consent__overlay"></div>
+        <aside class="md-consent__inner">
+          <form class="md-consent__form md-grid md-typeset" name="consent">
+            
+
+  
+    
+  
+
+
+  
+    
+  
+
+
+
+
+<h4>Cookie consent</h4>
+<p>I use cookies to recognize your repeated visits and preferences, as well as to measure the effectiveness of the documentation and whether you can find what you're searching for. With your consent, you're helping me to make this site better. Thank you!</p>
+<input class="md-toggle" type="checkbox" id="__settings" >
+<div class="md-consent__settings">
+  <ul class="task-list">
+    
+      
+      
+        
+        
+      
+      <li class="task-list-item">
+        <label class="task-list-control">
+          <input type="checkbox" name="analytics" checked>
+          <span class="task-list-indicator"></span>
+          Google Analytics
+        </label>
+      </li>
+    
+      
+      
+        
+        
+      
+      <li class="task-list-item">
+        <label class="task-list-control">
+          <input type="checkbox" name="github" checked>
+          <span class="task-list-indicator"></span>
+          GitHub
+        </label>
+      </li>
+    
+  </ul>
+</div>
+<div class="md-consent__controls">
+  
+    
+      <button class="md-button md-button--primary">Accept</button>
+    
+    
+    
+  
+    
+    
+    
+      <label class="md-button" for="__settings">Manage settings</label>
+    
+  
+</div>
+          </form>
+        </aside>
+      </div>
+      <script>var consent=__md_get("__consent");if(consent)for(var input of document.forms.consent.elements)input.name&&(input.checked=consent[input.name]||!1);else"file:"!==location.protocol&&setTimeout((function(){document.querySelector("[data-md-component=consent]").hidden=!1}),250);var form=document.forms.consent;for(var action of["submit","reset"])form.addEventListener(action,(function(e){if(e.preventDefault(),"reset"===e.type)for(var n of document.forms.consent.elements)n.name&&(n.checked=!1);__md_set("__consent",Object.fromEntries(Array.from(new FormData(form).keys()).map((function(e){return[e,!0]})))),location.hash="",location.reload()}))</script>
+    
+    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.footer", "content.code.copy", "content.action.edit", "content.action.view"], "search": "../assets/javascripts/workers/search.f8cc74c7.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.c8b220af.min.js"></script>
+      
+    
+  </body>
+</html>
