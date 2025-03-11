@@ -35,8 +35,11 @@ To avoid Kubernetes data such as contents of Secret object being written to tmpf
 
 ```bash
 swapoff -a
-sed -i '/ swap / s/^\(.*\)$/#\1/g' /etc/fstab
+sed -i '/\<swap\>/s/^/#/' /etc/fstab
 ```
+
+!!! danger
+    If swap is not disabled, you may also encounter issues with the kubelet service failing to start.
 
 ### System updates
 
