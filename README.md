@@ -1,12 +1,12 @@
 # Kubestronaut
 
-Workshop for preparing to become a Kubestronaut. Work in progress.
+Workshop for preparing to become a Kubestronaut.
 
 ## Getting Started
 
 [![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://github.com/codespaces/new?hide_repo_select=true&ref=main&repo=902960077)
 
-To run the documentation locally, run the following following commands.
+To run the documentation locally, run the following commands.
 
 ```bash
 python3 -m venv .venv

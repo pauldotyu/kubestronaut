@@ -2,8 +2,7 @@
 
 Once you get past the KCNA and KCSA exams, you should have your sights set on the CKAD exam. This was once considered an entry-level exam but due to its intense hands-on nature, it's better classified as intermediate. Despite this, it makes an excellent starting point for those looking to dive deeper into Kubernetes.
 
-Read through the [Certified Kubernetes Application Developer (CKAD)](
-https://training.linuxfoundation.org/certification/certified-kubernetes-application-developer-ckad/) page for Domain and Competency details and information on how to register for the exam.
+Read through the [Certified Kubernetes Application Developer (CKAD)](https://training.linuxfoundation.org/certification/certified-kubernetes-application-developer-ckad/) page for Domain and Competency details and information on how to register for the exam.
 
 Some of the hands on activities that you should be comfortable with are:
 
