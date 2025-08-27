@@ -1,6 +1,6 @@
 ## Overview
 
-This workshop intentionally uses Kubernetes v1.31.6 to provide cluster upgrade practice opportunities. While current exams are based on Kubernetes v1.32, the core concepts remain consistent between versions.
+This workshop intentionally uses Kubernetes v1.31.6 to provide cluster upgrade practice opportunities. While current exams are based on Kubernetes v1.33, the core concepts remain consistent between versions.
 
 As part of the cluster setup, you'll install containerd for the container runtime, [gVisor](https://gvisor.dev/) for container isolation, Cilium as the CNI plugin, MetalLB for mimicking cloud load balancers, and Ingress-Nginx Controller - all well-documented, popular choices that you can substitute if preferred.
 
@@ -192,7 +192,7 @@ systemctl enable --now kubelet
 CRI-O is an implementation of the Container Runtime Interface (CRI) used by the kubelet to interact with container runtimes. Install crictl by downloading the binary to the system.
 
 ```bash
-export CRICTL_VERSION="v1.31.1"
+export CRICTL_VERSION="v1.33.0"
 export CRICTL_ARCH=$(dpkg --print-architecture)
 wget https://github.com/kubernetes-sigs/cri-tools/releases/download/${CRICTL_VERSION}/crictl-${CRICTL_VERSION}-linux-${CRICTL_ARCH}.tar.gz
 tar zxvf crictl-${CRICTL_VERSION}-linux-${CRICTL_ARCH}.tar.gz -C /usr/local/bin

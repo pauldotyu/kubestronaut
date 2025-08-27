@@ -692,6 +692,6 @@ For more NetworkPolicy practice, check out the [NetworkPolicy Editor by Isovalen
 
 There is a lot more to cover for the CKAD exam. Here are some additional resources to help you prepare:
 
-- [CKAD Exam Curriculum](https://github.com/cncf/curriculum/blob/master/CKAD_Curriculum_v1.32.pdf)
+- [CKAD Exam Curriculum](https://github.com/cncf/curriculum/blob/master/CKAD_Curriculum_v1.33.pdf)
 - [CKAD Certification Learning Path](https://kodekloud.com/learning-path/ckad)
 - [CKAD - free materials](https://www.reddit.com/r/kubernetes/comments/r4q1ec/ckad_free_materials/)

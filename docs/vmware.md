@@ -10,9 +10,9 @@ If you're opposed to using VMware products, you can use [VirtualBox]{:target="_b
 
 Start by signing up for a free Broadcom Support account at [https://access.broadcom.com]{:target="_blank"} then log in and navigate to the [Free Downloads]{:target="_blank"} page.
 
-If you are using a macOS machine with Apple silicon, download and install [VMware Fusion 13.6.2]{:target="_blank"}.
+If you are using a macOS machine with Apple silicon, download and install [VMware Fusion 13.6.3]{:target="_blank"}.
 
-If you are using a Windows or Linux machine, download and install [VMware Workstation Pro 17.6.2]{:target="_blank"}.
+If you are using a Windows or Linux machine, download and install [VMware Workstation Pro 17.6.3]{:target="_blank"}.
 
 !!! warning
     VMware Fusion 13.6.3 and VMware Workstation Pro 17.6.3 are the latest versions as of March 4, 2025. The instructions in this workshop are based on the versions listed above, so you should be using the same versions to avoid any discrepancies. 
@@ -22,12 +22,12 @@ If you are using a Windows or Linux machine, download and install [VMware Workst
 Installing VMware Fusion or VMware Workstation Pro is straightforward. Simply double-click the downloaded file and follow the on-screen instructions.
 
 !!! note
-    Installing VMWare Workstation Pro 17.6.2 on Ubuntu Desktop can be a bit tricky, especially if you are using a UEFI-based system with secure boot enabled. I've ran into a few issues installing on my Ubuntu 24.10 machine and published a blog post titled, [Installing VMware Workstation Pro 17.6.2 on Ubuntu Desktop]{:target="_blank"} that you can follow.
+    Installing VMWare Workstation Pro 17.6.3 on Ubuntu Desktop can be a bit tricky, especially if you are using a UEFI-based system with secure boot enabled. I've ran into a few issues installing on my Ubuntu 24.10 machine and published a blog post titled, [Installing VMware Workstation Pro 17.6.3 on Ubuntu Desktop]{:target="_blank"} that you can follow.
 
 [https://access.broadcom.com]: https://access.broadcom.com/
 [Free Downloads]: https://support.broadcom.com/group/ecx/free-downloads
-[VMware Fusion 13.6.2]: https://support.broadcom.com/group/ecx/productdownloads?subfamily=VMware%20Fusion&freeDownloads=true
-[VMware Workstation Pro 17.6.2]: https://support.broadcom.com/group/ecx/productdownloads?subfamily=VMware%20Workstation%20Pro&freeDownloads=true
+[VMware Fusion 13.6.3]: https://support.broadcom.com/group/ecx/productdownloads?subfamily=VMware%20Fusion&freeDownloads=true
+[VMware Workstation Pro 17.6.3]: https://support.broadcom.com/group/ecx/productdownloads?subfamily=VMware%20Workstation%20Pro&freeDownloads=true
 [VirtualBox]: https://www.oracle.com/virtualization/virtualbox/
 [Hyper-V]: https://learn.microsoft.com/windows-server/virtualization/hyper-v/get-started/install-hyper-v?pivots=windows-server
-[Installing VMware Workstation Pro 17.6.2 on Ubuntu Desktop]: https://paulyu.dev/article/installing-vmware-on-ubuntu-desktop/
+[Installing VMware Workstation Pro 17.6.3 on Ubuntu Desktop]: https://paulyu.dev/article/installing-vmware-on-ubuntu-desktop/
