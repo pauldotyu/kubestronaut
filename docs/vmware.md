@@ -22,7 +22,7 @@ If you are using a Windows or Linux machine, download and install [VMware Workst
 Installing VMware Fusion or VMware Workstation Pro is straightforward. Simply double-click the downloaded file and follow the on-screen instructions.
 
 !!! note
-    Installing VMWare Workstation Pro 17.6.3 on Ubuntu Desktop can be a bit tricky, especially if you are using a UEFI-based system with secure boot enabled. I've ran into a few issues installing on my Ubuntu 24.10 machine and published a blog post titled, [Installing VMware Workstation Pro 17.6.3 on Ubuntu Desktop]{:target="_blank"} that you can follow.
+    Installing VMware Workstation Pro 17.6.2 on Ubuntu Desktop can be a bit tricky, especially if you are using a UEFI-based system with secure boot enabled. I've ran into a few issues installing on my Ubuntu 24.10 machine and published a blog post titled, [Installing VMware Workstation Pro 17.6.2 on Ubuntu Desktop]{:target="_blank"} that you can follow.
 
 [https://access.broadcom.com]: https://access.broadcom.com/
 [Free Downloads]: https://support.broadcom.com/group/ecx/free-downloads
