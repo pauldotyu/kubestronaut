@@ -10,7 +10,7 @@ If you're opposed to using VMware products, you can use [VirtualBox]{:target="_b
 
 Start by signing up for a free Broadcom Support account at [https://access.broadcom.com]{:target="_blank"} then log in and navigate to the [Free Downloads]{:target="_blank"} page.
 
-If you are using a macOS machine with Apple silicon, download and install [VMware Fusion 13.6.3]{:target="_blank"}.
+If you are using a macOS machine with Apple silicon, download and install [VMware Fusion 13.6.2]{:target="_blank"}.
 
 If you are using a Windows or Linux machine, download and install [VMware Workstation Pro 17.6.3]{:target="_blank"}.
 
