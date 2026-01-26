@@ -30,4 +30,4 @@ Installing VMware Fusion or VMware Workstation Pro is straightforward. Simply do
 [VMware Workstation Pro 17.6.3]: https://support.broadcom.com/group/ecx/productdownloads?subfamily=VMware%20Workstation%20Pro&freeDownloads=true
 [VirtualBox]: https://www.oracle.com/virtualization/virtualbox/
 [Hyper-V]: https://learn.microsoft.com/windows-server/virtualization/hyper-v/get-started/install-hyper-v?pivots=windows-server
-[Installing VMware Workstation Pro 17.6.3 on Ubuntu Desktop]: https://paulyu.dev/article/installing-vmware-on-ubuntu-desktop/
+[Installing VMware Workstation Pro 17.6.2 on Ubuntu Desktop]: https://paulyu.dev/article/installing-vmware-on-ubuntu-desktop/
