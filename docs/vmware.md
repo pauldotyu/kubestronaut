@@ -12,7 +12,7 @@ Start by signing up for a free Broadcom Support account at [https://access.broad
 
 If you are using a macOS machine with Apple silicon, download and install [VMware Fusion 13.6.2]{:target="_blank"}.
 
-If you are using a Windows or Linux machine, download and install [VMware Workstation Pro 17.6.3]{:target="_blank"}.
+If you are using a Windows or Linux machine, download and install [VMware Workstation Pro 17.6.2]{:target="_blank"}.
 
 !!! warning
     VMware Fusion 13.6.3 and VMware Workstation Pro 17.6.3 are the latest versions as of March 4, 2025. The instructions in this workshop are based on the versions listed above, so you should be using the same versions to avoid any discrepancies. 
