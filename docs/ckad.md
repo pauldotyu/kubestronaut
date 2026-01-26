@@ -2,8 +2,7 @@
 
 Once you get past the KCNA and KCSA exams, you should have your sights set on the CKAD exam. This was once considered an entry-level exam but due to its intense hands-on nature, it's better classified as intermediate. Despite this, it makes an excellent starting point for those looking to dive deeper into Kubernetes.
 
-Read through the [Certified Kubernetes Application Developer (CKAD)](
-https://training.linuxfoundation.org/certification/certified-kubernetes-application-developer-ckad/) page for Domain and Competency details and information on how to register for the exam.
+Read through the [Certified Kubernetes Application Developer (CKAD)](https://training.linuxfoundation.org/certification/certified-kubernetes-application-developer-ckad/) page for Domain and Competency details and information on how to register for the exam.
 
 Some of the hands on activities that you should be comfortable with are:
 
@@ -692,6 +691,6 @@ For more NetworkPolicy practice, check out the [NetworkPolicy Editor by Isovalen
 
 There is a lot more to cover for the CKAD exam. Here are some additional resources to help you prepare:
 
-- [CKAD Exam Curriculum](https://github.com/cncf/curriculum/blob/master/CKAD_Curriculum_v1.32.pdf)
+- [CKAD Exam Curriculum](https://github.com/cncf/curriculum/blob/master/CKAD_Curriculum_v1.34.pdf)
 - [CKAD Certification Learning Path](https://kodekloud.com/learning-path/ckad)
 - [CKAD - free materials](https://www.reddit.com/r/kubernetes/comments/r4q1ec/ckad_free_materials/)

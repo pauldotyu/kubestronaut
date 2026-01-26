@@ -2,8 +2,7 @@
 
 Like the KCNA exam, the KCSA exam is an entry-level certification that focuses on Kubernetes and Cloud Native security fundamentals. This multiple-choice exam tests your understanding of essential security concepts including Kubernetes security architecture, network policies, and security best practices.
 
-Read through the [Kubernetes and Cloud Native Security Associate (KCSA)](
-https://training.linuxfoundation.org/certification/kubernetes-and-cloud-native-security-associate-kcsa/) page for Domain and Competency details and information on how to register for the exam.
+Read through the [Kubernetes and Cloud Native Security Associate (KCSA)](https://training.linuxfoundation.org/certification/kubernetes-and-cloud-native-security-associate-kcsa/) page for Domain and Competency details and information on how to register for the exam.
 
 I also published a [KCSA study guide](https://paulyu.dev/article/kcsa-study-guide/) that you may find helpful.
 

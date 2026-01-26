@@ -589,7 +589,7 @@ etcdctl --cert /etc/kubernetes/pki/apiserver-etcd-client.crt --key /etc/kubernet
 
 ## Additional Resources
 
-- [CKS Exam Curriculum](https://github.com/cncf/curriculum/blob/master/CKS_Curriculum%20v1.32.pdf)
+- [CKS Exam Curriculum](https://github.com/cncf/curriculum/blob/master/CKS_Curriculum%20v1.34.pdf)
 - [CKS Certification Learning Path](https://kodekloud.com/learning-path/cks)
 - [Kubernetes Security Best Practices](https://kubernetes.io/docs/concepts/security/security-checklist/)
 - [Community curated CKS resources](https://github.com/walidshaari/Certified-Kubernetes-Security-Specialist)

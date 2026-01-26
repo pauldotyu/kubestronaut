@@ -413,10 +413,10 @@ kubeadm version
 kubelet --version
 ```
 
-Both kubeadm and kubelet should be running v1.31.6. Change the package repository to point to the v1.32.x packages.
+Both kubeadm and kubelet should be running v1.34.3. Change the package repository to point to the v1.35.x packages.
 
 ```bash
-sed -i 's/v1.31/v1.32/g' /etc/apt/sources.list.d/kubernetes.list
+sed -i 's/v1.34/v1.35/g' /etc/apt/sources.list.d/kubernetes.list
 ```
 
 Update the package list.
@@ -439,10 +439,10 @@ The packages were held back when you installed them to prevent automatic upgrade
 apt-mark unhold kubeadm
 ```
 
-Upgrade the kubeadm package to v1.32.2.
+Upgrade the kubeadm package to v1.35.0.
 
 ```bash
-apt install -y kubeadm=1.32.2-1.1
+apt install -y kubeadm=1.35.0-1.1
 ```
 
 Hold the kubeadm package again to prevent inadvertent upgrades.
@@ -470,30 +470,30 @@ If the upgrade check went well, you'll see the following output.
 [upgrade/config] Use 'kubeadm init phase upload-config --config your-config.yaml' to re-upload it.
 [upgrade] Running cluster health checks
 [upgrade] Fetching available versions to upgrade to
-[upgrade/versions] Cluster version: 1.31.6
-[upgrade/versions] kubeadm version: v1.32.2
-[upgrade/versions] Target version: v1.32.2
-[upgrade/versions] Latest version in the v1.31 series: v1.31.6
+[upgrade/versions] Cluster version: 1.34.3
+[upgrade/versions] kubeadm version: v1.35.0
+[upgrade/versions] Target version: v1.35.0
+[upgrade/versions] Latest version in the v1.34 series: v1.34.3
 
 Components that must be upgraded manually after you've upgraded the control plane with 'kubeadm upgrade apply':
 COMPONENT   NODE       CURRENT   TARGET
-kubelet     worker-1   v1.31.6   v1.32.2
-kubelet     worker-2   v1.31.6   v1.32.2
-kubelet     control    v1.32.2   v1.32.2
+kubelet     worker-1   v1.34.3   v1.35.0
+kubelet     worker-2   v1.34.3   v1.35.0
+kubelet     control    v1.35.0   v1.35.0
 
 Upgrade to the latest stable version:
 
 COMPONENT                 NODE      CURRENT    TARGET
-kube-apiserver            control   v1.31.6    v1.32.2
-kube-controller-manager   control   v1.31.6    v1.32.2
-kube-scheduler            control   v1.31.6    v1.32.2
-kube-proxy                          1.31.6     v1.32.2
+kube-apiserver            control   v1.34.3    v1.35.0
+kube-controller-manager   control   v1.34.3    v1.35.0
+kube-scheduler            control   v1.34.3    v1.35.0
+kube-proxy                          1.34.3     v1.35.0
 CoreDNS                             v1.11.3    v1.11.3
 etcd                      control   3.5.15-0   3.5.16-0
 
 You can now apply the upgrade by executing the following command:
 
-	kubeadm upgrade apply v1.32.2
+	kubeadm upgrade apply v1.35.0
 
 _____________________________________________________________________
 
@@ -512,7 +512,7 @@ _____________________________________________________________________
 Upgrade the control plane components by running the following command.
 
 ```bash
-kubeadm upgrade apply v1.32.2 --v=5
+kubeadm upgrade apply v1.35.0 --v=5
 ```
 
 When asked if you are sure you want to proceed, type `y` and press `Enter`.
@@ -528,10 +528,10 @@ When the control plane upgrade is complete, you can move on to upgrading the kub
 apt-mark unhold kubelet kubectl
 ```
 
-Upgrade the kubelet and kubectl packages to v1.32.2.
+Upgrade the kubelet and kubectl packages to v1.35.0.
 
 ```bash
-apt install kubelet=1.32.2-1.1 kubectl=1.32.2-1.1
+apt install kubelet=1.35.0-1.1 kubectl=1.35.0-1.1
 ```
 
 Hold the kubelet and kubectl packages again to prevent inadvertent upgrades.
@@ -553,7 +553,7 @@ kubectl uncordon control
 
 #### Verify upgrade
 
-Run the following command to verify the control node is upgraded to v1.32.2.
+Run the following command to verify the control node is upgraded to v1.35.0.
 
 ```bash
 kubectl get nodes
@@ -563,12 +563,12 @@ Your output should look like this.
 
 ```text
 NAME       STATUS   ROLES           AGE   VERSION
-control    Ready    control-plane   15h   v1.32.2  # upgraded
-worker-1   Ready    <none>          15h   v1.31.6
-worker-2   Ready    <none>          15h   v1.31.6
+control    Ready    control-plane   15h   v1.35.0  # upgraded
+worker-1   Ready    <none>          15h   v1.34.3
+worker-2   Ready    <none>          15h   v1.34.3
 ```
 
-You can see the control node is now running v1.32.2 and the worker nodes are still running v1.31.6. You need to upgrade the worker nodes next.
+You can see the control node is now running v1.35.0 and the worker nodes are still running v1.34.3. You need to upgrade the worker nodes next.
 
 ### Worker nodes
 
@@ -591,10 +591,10 @@ SSH into the worker node and switch to the root user.
 sudo -i
 ```
 
-Update the package repository to point to the v1.32.x packages.
+Update the package repository to point to the v1.35.x packages.
 
 ```bash
-sed -i 's/v1.31/v1.32/g' /etc/apt/sources.list.d/kubernetes.list
+sed -i 's/v1.34/v1.35/g' /etc/apt/sources.list.d/kubernetes.list
 ```
 
 Update the package list.
@@ -609,10 +609,10 @@ Unhold the kubeadm package so it can be upgraded.
 apt-mark unhold kubeadm
 ```
 
-Upgrade the kubeadm package to v1.32.2.
+Upgrade the kubeadm package to v1.35.0.
 
 ```bash
-apt install kubeadm=1.32.2-1.1
+apt install kubeadm=1.35.0-1.1
 ```
 
 Hold the kubeadm package to prevent automatic upgrades again.
@@ -637,10 +637,10 @@ Unhold the kubelet and kubectl packages so they can be upgraded.
 apt-mark unhold kubectl kubelet
 ```
 
-Upgrade the kubelet and kubectl packages to v1.32.2.
+Upgrade the kubelet and kubectl packages to v1.35.0.
 
 ```bash
-apt install kubelet=1.32.2-1.1 kubectl=1.32.2-1.1
+apt install kubelet=1.35.0-1.1 kubectl=1.35.0-1.1
 ```
 
 Hold the kubelet and kubectl packages to prevent automatic upgrades again.
@@ -675,13 +675,13 @@ kubectl get nodes
     Make sure you are back on the control node before running the above command.
 
 
-Now you should see a worker node running v1.32.2.
+Now you should see a worker node running v1.35.0.
 
 ```text
 NAME       STATUS                     ROLES           AGE   VERSION
-control    Ready                      control-plane   15h   v1.32.2 # upgraded
-worker-1   Ready,SchedulingDisabled   <none>          15h   v1.32.2 # upgraded
-worker-2   Ready                      <none>          15h   v1.31.6
+control    Ready                      control-plane   15h   v1.35.0 # upgraded
+worker-1   Ready,SchedulingDisabled   <none>          15h   v1.35.0 # upgraded
+worker-2   Ready                      <none>          15h   v1.34.3
 ```
 
 #### Uncordon node
@@ -699,5 +699,5 @@ kubectl uncordon worker-1
 
 ## Additional Resources
 
-- [CKA Exam Curriculum](https://github.com/cncf/curriculum/blob/master/CKA_Curriculum_v1.32.pdf)
+- [CKA Exam Curriculum](https://github.com/cncf/curriculum/blob/master/CKA_Curriculum_v1.34.pdf)
 - [CKA Certification Learning Path](https://kodekloud.com/learning-path/cka)
