@@ -26,7 +26,7 @@ Installing VMware Fusion or VMware Workstation Pro is straightforward. Simply do
 
 [https://access.broadcom.com]: https://access.broadcom.com/
 [Free Downloads]: https://support.broadcom.com/group/ecx/free-downloads
-[VMware Fusion 13.6.3]: https://support.broadcom.com/group/ecx/productdownloads?subfamily=VMware%20Fusion&freeDownloads=true
+[VMware Fusion 13.6.2]: https://support.broadcom.com/group/ecx/productdownloads?subfamily=VMware%20Fusion&freeDownloads=true
 [VMware Workstation Pro 17.6.2]: https://support.broadcom.com/group/ecx/productdownloads?subfamily=VMware%20Workstation%20Pro&freeDownloads=true
 [VirtualBox]: https://www.oracle.com/virtualization/virtualbox/
 [Hyper-V]: https://learn.microsoft.com/windows-server/virtualization/hyper-v/get-started/install-hyper-v?pivots=windows-server
