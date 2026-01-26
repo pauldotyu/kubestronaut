@@ -528,7 +528,7 @@ When the control plane upgrade is complete, you can move on to upgrading the kub
 apt-mark unhold kubelet kubectl
 ```
 
-Upgrade the kubelet and kubectl packages to v1.33.0.
+Upgrade the kubelet and kubectl packages to v1.35.0.
 
 ```bash
 apt install kubelet=1.33.0-1.1 kubectl=1.33.0-1.1
