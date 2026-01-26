@@ -1,6 +1,6 @@
 ## Overview
 
-This workshop intentionally uses Kubernetes v1.31.6 to provide cluster upgrade practice opportunities. While current exams are based on Kubernetes v1.34, the core concepts remain consistent between versions.
+This workshop intentionally uses Kubernetes v1.34.3 to provide cluster upgrade practice opportunities. While current exams are based on Kubernetes v1.35, the core concepts remain consistent between versions.
 
 As part of the cluster setup, you'll install containerd for the container runtime, [gVisor](https://gvisor.dev/) for container isolation, Cilium as the CNI plugin, MetalLB for mimicking cloud load balancers, and Ingress-Nginx Controller - all well-documented, popular choices that you can substitute if preferred.
 
