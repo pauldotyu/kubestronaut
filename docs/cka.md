@@ -531,7 +531,7 @@ apt-mark unhold kubelet kubectl
 Upgrade the kubelet and kubectl packages to v1.35.0.
 
 ```bash
-apt install kubelet=1.33.0-1.1 kubectl=1.33.0-1.1
+apt install kubelet=1.35.0-1.1 kubectl=1.35.0-1.1
 ```
 
 Hold the kubelet and kubectl packages again to prevent inadvertent upgrades.
