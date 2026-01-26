@@ -192,7 +192,7 @@ systemctl enable --now kubelet
 CRI-O is an implementation of the Container Runtime Interface (CRI) used by the kubelet to interact with container runtimes. Install crictl by downloading the binary to the system.
 
 ```bash
-export CRICTL_VERSION="v1.34.3"
+export CRICTL_VERSION="v1.34.0"
 export CRICTL_ARCH=$(dpkg --print-architecture)
 wget https://github.com/kubernetes-sigs/cri-tools/releases/download/${CRICTL_VERSION}/crictl-${CRICTL_VERSION}-linux-${CRICTL_ARCH}.tar.gz
 tar zxvf crictl-${CRICTL_VERSION}-linux-${CRICTL_ARCH}.tar.gz -C /usr/local/bin
