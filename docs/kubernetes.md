@@ -169,15 +169,15 @@ The following tools are necessary for a successful Kubernetes installation:
 Add the Kubernetes repository.
 
 ```bash
-curl -fsSL https://pkgs.k8s.io/core:/stable:/v1.31/deb/Release.key | gpg --dearmor -o /etc/apt/keyrings/kubernetes-apt-keyring.gpg
-echo 'deb [signed-by=/etc/apt/keyrings/kubernetes-apt-keyring.gpg] https://pkgs.k8s.io/core:/stable:/v1.31/deb/ /' | tee /etc/apt/sources.list.d/kubernetes.list
+curl -fsSL https://pkgs.k8s.io/core:/stable:/v1.34/deb/Release.key | gpg --dearmor -o /etc/apt/keyrings/kubernetes-apt-keyring.gpg
+echo 'deb [signed-by=/etc/apt/keyrings/kubernetes-apt-keyring.gpg] https://pkgs.k8s.io/core:/stable:/v1.34/deb/ /' | tee /etc/apt/sources.list.d/kubernetes.list
 ```
 
 Update the system, install the Kubernetes packages, and hold packages so they don't get unintentionally updated.
 
 ```bash
 apt-get update
-apt-get install -y kubelet=1.31.6-1.1 kubeadm=1.31.6-1.1 kubectl=1.31.6-1.1
+apt-get install -y kubelet=1.34.0-1.1 kubeadm=1.34.0-1.1 kubectl=1.34.0-1.1
 apt-mark hold kubelet kubeadm kubectl
 ```
 
@@ -231,7 +231,7 @@ Using kubeadm, install the Kubernetes with the `kubeadm init` command. This will
 Make sure you are back in the control node as the root user and run the following command to initialize the cluster.
 
 ```bash
-kubeadm init --kubernetes-version 1.31.6 --pod-network-cidr 10.21.0.0/16 --v=5
+kubeadm init --kubernetes-version 1.34.0 --pod-network-cidr 10.21.0.0/16 --v=5
 ```
 
 !!! note
@@ -254,13 +254,13 @@ Kubernetes requires a Container Network Interface (CNI) plugin to provide networ
 Install the Cilium CLI.
 
 !!! note
-    The Cilium CLI version will be pinned to `v0.16.24`. To get the latest version, visit the [Cilium CLI releases page](https://github.com/cilium/cilium-cli/releases) and update the version number.
+    The Cilium CLI version will be pinned to `v0.19.0`. To get the latest version, visit the [Cilium CLI releases page](https://github.com/cilium/cilium-cli/releases) and update the version number.
 
 
 Set the Cilium version and architecture.
 
 ```bash
-export CILIUM_VERSION="v0.16.24"
+export CILIUM_VERSION="v0.19.0"
 export CILIUM_ARCH=$(dpkg --print-architecture)
 ```
 
@@ -287,7 +287,7 @@ cilium version --client
 Install Cilium CNI plugin.
 
 ```bash
-cilium install --version 1.17.1
+cilium install
 ```
 
 Run the following command to monitor the Cilium installation progress.
@@ -425,7 +425,7 @@ EOF
 Run the following commands to install Helm.
 
 ```bash
-curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3
+curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-4
 chmod 700 get_helm.sh
 ./get_helm.sh
 rm ./get_helm.sh
